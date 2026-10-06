@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Hồ Anh Bình – Chuyên gia Cột sống, Sức khỏe, Quản trị, AI &amp; Automation</title>
+<meta name="description" content="Chuyên gia chăm sóc cột sống, coaching sức khỏe, tư vấn AI cho doanh nghiệp, AppSheet và tự động hóa quản trị.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;800&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#fff;--bg2:#f3f6f5;--ink:#15191a;--mute:#5a6666;--line:#dde4e2;--teal:#0f8a7e;--teal-d:#0a6b61;--on:#fff;--card:#fff}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#101414;--bg2:#171d1d;--ink:#eef3f2;--mute:#9aa8a6;--line:#2a3434;--teal:#2bbfae;--teal-d:#59d4c6;--on:#06201c;--card:#171d1d}}
+:root[data-theme="dark"]{--bg:#101414;--bg2:#171d1d;--ink:#eef3f2;--mute:#9aa8a6;--line:#2a3434;--teal:#2bbfae;--teal-d:#59d4c6;--on:#06201c;--card:#171d1d}
+:root{box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+html{scroll-behavior:smooth;scroll-padding-top:84px}
+*,*::before,*::after{box-sizing:inherit}
+body{margin:0;background:var(--bg);color:var(--ink);font:400 16px/1.65 "Be Vietnam Pro",system-ui,-apple-system,"Segoe UI",sans-serif}
+a{color:inherit;text-decoration:none}
+h1,h2,h3{line-height:1.15;margin:0;letter-spacing:-.02em}
+h2{font-size:clamp(1.7rem,4vw,2.6rem);font-weight:800;max-width:20ch}
+h3{font-size:1.15rem;font-weight:600;letter-spacing:-.01em}
+p{margin:0}
+.w{max-width:1120px;margin:0 auto;padding:0 20px}
+section{padding:72px 0}
+.alt{background:var(--bg2)}
+.lead{color:var(--mute);max-width:60ch;margin-top:14px}
+.btn{display:inline-block;border:1.5px solid var(--ink);padding:12px 22px;border-radius:999px;font-weight:600;font-size:.95rem;cursor:pointer;background:transparent;color:var(--ink);font-family:inherit;transition:background .2s,color .2s}
+.btn:hover{background:var(--ink);color:var(--bg)}
+.btn.p{background:var(--teal);border-color:var(--teal);color:var(--on)}
+.btn.p:hover{background:var(--teal-d);border-color:var(--teal-d);color:var(--on)}
+:focus-visible{outline:3px solid var(--teal);outline-offset:3px}
+header{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;background:color-mix(in srgb,var(--bg) 92%,transparent);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+.nav{display:flex;align-items:center;justify-content:space-between;height:64px;gap:16px}
+.logo{font-weight:800;letter-spacing:-.02em;font-size:1.1rem}
+.menu{display:none;gap:18px;font-size:.9rem;color:var(--mute)}
+.menu a:hover{color:var(--ink)}
+.burger{background:none;border:1px solid var(--line);border-radius:8px;width:40px;height:40px;color:var(--ink);font-size:1.1rem;cursor:pointer}
+.drawer{display:none;flex-direction:column;padding:8px 20px 16px;border-top:1px solid var(--line)}
+.drawer.open{display:flex}.drawer a{padding:10px 0;border-bottom:1px solid var(--line)}
+.rt{display:flex;gap:10px;align-items:center}
+.hero{padding:56px 0 72px}
+.hg{display:grid;gap:40px;align-items:center}
+.hero h1{font-size:clamp(3rem,10vw,5.8rem);font-weight:800;letter-spacing:-.04em}
+.role{color:var(--teal-d);font-weight:600;margin-top:12px}
+.hl{font-size:clamp(1.3rem,3vw,1.8rem);font-weight:600;margin-top:26px;line-height:1.3}
+.cta{display:flex;flex-wrap:wrap;gap:12px;margin-top:28px}
+.art{background:var(--bg2);border:1px solid var(--line);border-radius:24px;padding:20px;display:flex;flex-direction:column;align-items:center}
+.art svg{width:100%;max-width:340px;height:auto}
+.art small{color:var(--mute);margin-top:8px;font-size:.8rem}
+.stats{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--line);border:1px solid var(--line);border-radius:16px;overflow:hidden;margin-top:36px}
+.stat{background:var(--bg);padding:22px}
+.stat b{display:block;font-size:2.1rem;font-weight:800;letter-spacing:-.03em;color:var(--teal-d)}
+.stat span{color:var(--mute);font-size:.9rem}
+.note{color:var(--mute);font-size:.8rem;margin-top:10px}
+.about{display:grid;gap:12px;margin-top:28px;padding:0;list-style:none}
+.about li{padding:14px 0 14px 28px;border-bottom:1px solid var(--line);position:relative}
+.about li::before{content:"";position:absolute;left:0;top:23px;width:12px;height:12px;border-radius:4px;background:var(--teal)}
+.grid{display:grid;gap:16px;margin-top:36px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:24px;display:flex;flex-direction:column;gap:12px}
+.card ul{margin:0;padding-left:18px;color:var(--mute);font-size:.93rem}
+.card .btn{margin-top:auto;align-self:flex-start;padding:9px 18px;font-size:.88rem}
+.tabs{display:inline-flex;border:1.5px solid var(--ink);border-radius:999px;margin-top:28px;padding:4px}
+.tabs button{border:0;background:none;padding:10px 20px;border-radius:999px;font:600 .95rem inherit;font-family:inherit;color:var(--ink);cursor:pointer}
+.tabs button[aria-selected="true"]{background:var(--ink);color:var(--bg)}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin:20px 0 26px}
+.chip{border:1px solid var(--line);padding:6px 14px;border-radius:999px;font-size:.9rem;background:var(--card)}
+.steps{display:grid;gap:0;margin-top:36px;counter-reset:s}
+.step{display:grid;grid-template-columns:44px 1fr;gap:16px;padding:20px 0;border-top:1px solid var(--line)}
+.step i{font-style:normal;width:40px;height:40px;border-radius:50%;background:var(--teal);color:var(--on);display:grid;place-items:center;font-weight:700}
+.step p{color:var(--mute)}
+.meta{color:var(--teal-d);font-weight:600;font-size:.9rem}
+details{border:1px solid var(--line);border-radius:14px;background:var(--card);padding:16px 20px}
+details summary{cursor:pointer;font-weight:600;list-style:none;display:flex;justify-content:space-between;gap:10px}
+details summary::after{content:"+";color:var(--teal-d);font-size:1.3rem;line-height:1}
+details[open] summary::after{content:"–"}
+details dl{margin:14px 0 0;display:grid;gap:8px;font-size:.92rem}
+details dt{font-weight:600;color:var(--teal-d)}details dd{margin:0 0 4px;color:var(--mute)}
+.filters{display:flex;flex-wrap:wrap;gap:8px;margin-top:26px}
+.filters button{border:1px solid var(--line);background:var(--card);color:var(--ink);padding:8px 16px;border-radius:999px;cursor:pointer;font-family:inherit;font-size:.9rem}
+.filters button[aria-pressed="true"]{background:var(--teal);color:var(--on);border-color:var(--teal)}
+.post small{color:var(--mute)}
+.lm{display:grid;gap:32px;background:var(--ink);color:var(--bg);border-radius:24px;padding:32px}
+.lm .lead{color:color-mix(in srgb,var(--bg) 70%,transparent)}
+form{display:grid;gap:12px}
+label{font-size:.88rem;font-weight:600;display:grid;gap:6px}
+input,select,textarea{font:inherit;padding:12px 14px;border-radius:10px;border:1px solid var(--line);background:var(--bg);color:var(--ink);width:100%}
+.lm input{border-color:transparent}
+.opts{display:flex;flex-wrap:wrap;gap:8px}
+.opts label{flex-direction:row;align-items:center;gap:6px;font-weight:500;background:var(--bg);color:var(--ink);padding:8px 14px;border-radius:999px;border:1px solid var(--line)}
+.opts input{width:auto;padding:0}
+.ok{display:none;background:var(--bg2);border-left:4px solid var(--teal);padding:14px 16px;border-radius:8px;color:var(--ink);font-size:.93rem}
+.ok.show{display:block}
+.two{display:grid;gap:12px}
+.ch{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:22px}
+.ch a{border:1px solid var(--line);padding:12px 16px;border-radius:12px;background:var(--card);font-weight:500}
+.ch a:hover{border-color:var(--teal)}
+footer{background:var(--ink);color:var(--bg);padding:48px 0 96px}
+footer .w{display:grid;gap:20px}
+footer nav{display:flex;flex-wrap:wrap;gap:16px;font-size:.9rem;opacity:.8}
+.sticky{position:fixed;left:16px;right:16px;bottom:calc(14px + env(safe-area-inset-bottom,0px));z-index:30;text-align:center;box-shadow:0 8px 24px rgba(0,0,0,.25)}
+.rv{opacity:0;transform:translateY(14px);transition:opacity .6s,transform .6s}
+.rv.in{opacity:1;transform:none}
+@media (prefers-reduced-motion:reduce){.rv{opacity:1;transform:none;transition:none}html{scroll-behavior:auto}}
+@media (min-width:760px){
+.menu{display:flex}.burger,.drawer{display:none!important}
+.hg{grid-template-columns:1.15fr .85fr}
+.stats{grid-template-columns:repeat(4,1fr)}
+.grid.c2{grid-template-columns:1fr 1fr}.grid.c3{grid-template-columns:repeat(3,1fr)}
+.steps{grid-template-columns:repeat(4,1fr);gap:20px}.step{grid-template-columns:1fr;border-top:2px solid var(--teal)}
+.lm{grid-template-columns:1fr 1fr;padding:48px}
+.two{grid-template-columns:1fr 1fr}
+.sticky{display:none}
+section{padding:96px 0}
+}
+@media (max-width:759px){.rt .btn.p{display:none}}
+</style>
+</head>
+<body>
+<header><div class="w nav">
+<a class="logo" href="#top">Hồ Anh Bình</a>
+<nav class="menu" aria-label="Chính"></nav>
+<div class="rt"><a class="btn p" href="#dat-lich" style="padding:9px 18px">Đặt lịch tư vấn</a><button class="burger" aria-label="Mở menu" aria-expanded="false">☰</button></div>
+</div><div class="drawer w" id="drawer"></div></header>
+
+<main id="top">
+<section class="hero"><div class="w hg">
+<div>
+<h1>Hồ Anh Bình</h1>
+<p class="role">Chuyên gia Cột sống – Sức khỏe – Quản trị – AI &amp; Automation</p>
+<p class="hl">Giúp cá nhân khỏe hơn.<br>Giúp doanh nghiệp vận hành thông minh hơn.</p>
+<p class="lead">Từ kinh nghiệm thực tế trong chăm sóc sức khỏe, kinh doanh, đào tạo và xây dựng hệ thống, tôi giúp cá nhân và doanh nghiệp biến kiến thức thành hành động, dữ liệu thành hệ thống và quy trình thành kết quả.</p>
+<div class="cta"><a class="btn p" href="#dat-lich">Đặt lịch tư vấn</a><a class="btn" href="#giai-phap">Khám phá giải pháp</a></div>
+</div>
+<div class="art">
+<svg viewBox="0 0 300 380" role="img" aria-label="Ảnh minh họa: cột sống nối với mạng dữ liệu. Thay bằng ảnh chân dung.">
+<g fill="none" stroke="var(--line)" stroke-width="1.5"><path d="M150 30 C 120 110, 180 150, 150 230 S 130 330, 150 360"/>
+<path d="M150 70 L 60 50 M150 120 L 240 100 M150 170 L 50 190 M150 220 L 250 240 M150 280 L 70 310"/></g>
+<g fill="var(--teal)">
+<rect x="124" y="28" width="52" height="22" rx="10"/><rect x="118" y="62" width="64" height="24" rx="11"/><rect x="114" y="98" width="72" height="26" rx="12"/>
+<rect x="112" y="136" width="76" height="28" rx="13"/><rect x="112" y="176" width="76" height="28" rx="13"/><rect x="114" y="216" width="72" height="26" rx="12"/>
+<rect x="118" y="254" width="64" height="24" rx="11"/><rect x="122" y="290" width="56" height="22" rx="10"/><rect x="128" y="324" width="44" height="20" rx="9"/></g>
+<g fill="var(--ink)"><circle cx="60" cy="50" r="7"/><circle cx="240" cy="100" r="7"/><circle cx="50" cy="190" r="7"/><circle cx="250" cy="240" r="7"/><circle cx="70" cy="310" r="7"/></g>
+</svg>
+<small>Vị trí ảnh chân dung chuyên gia (thay bằng ảnh thật)</small>
+</div></div></section>
+
+<section class="alt" id="ve-toi"><div class="w">
+<h2>15+ năm kinh nghiệm thực chiến</h2>
+<ul class="about" id="about"></ul>
+<div class="stats" id="stats"></div>
+<p class="note">Các con số mang tính minh họa, sẽ được cập nhật sau khi xác thực. Chỉnh trong mục CONFIG ở đầu mã script.</p>
+</div></section>
+
+<section id="dich-vu"><div class="w">
+<h2>Tôi có thể giúp gì?</h2>
+<p class="lead">Năm nhóm dịch vụ, từ chăm sóc cơ thể đến xây hệ thống quản trị.</p>
+<div class="grid c3" id="services"></div>
+</div></section>
+
+<section class="alt" id="giai-phap"><div class="w">
+<h2>Giải pháp cho bạn</h2>
+<p class="lead">Chọn đúng nhu cầu để xem hướng đi phù hợp.</p>
+<div class="tabs" role="tablist"><button role="tab" aria-selected="true" data-t="h">Bạn muốn khỏe hơn?</button><button role="tab" aria-selected="false" data-t="b">Bạn muốn doanh nghiệp vận hành tốt hơn?</button></div>
+<div id="path" style="margin-top:24px"></div>
+</div></section>
+
+<section id="quy-trinh"><div class="w">
+<h2>Từ vấn đề → giải pháp → hệ thống → kết quả</h2>
+<div class="steps" id="steps"></div>
+</div></section>
+
+<section class="alt" id="tu-van"><div class="w">
+<h2>Chương trình tư vấn</h2>
+<p class="lead">Chọn một chương trình và đặt lịch ngay.</p>
+<div class="grid c3" id="programs"></div>
+</div></section>
+
+<section id="case-study"><div class="w">
+<h2>Những gì tôi đã trực tiếp làm</h2>
+<p class="lead">Mỗi case đi theo chuỗi vấn đề, giải pháp, hệ thống, kết quả. Hình ảnh, số liệu và video sẽ bổ sung sau.</p>
+<div class="grid c2" id="cases"></div>
+</div></section>
+
+<section class="alt" id="dao-tao"><div class="w">
+<h2>Đào tạo để bạn tự xây được hệ thống</h2>
+<div class="grid c2" id="courses"></div>
+<div class="cta"><a class="btn p" href="#dat-lich">Xem tất cả khóa học</a></div>
+</div></section>
+
+<section id="kien-thuc"><div class="w">
+<h2>Kiến thức</h2>
+<p class="lead">Bài viết, video, podcast và tài liệu miễn phí. Dữ liệu nằm trong mảng POSTS, sẵn sàng nối với CMS.</p>
+<div class="filters" id="filters"></div>
+<div class="grid c3" id="posts"></div>
+</div></section>
+
+<section class="alt"><div class="w">
+<div class="lm" id="tai-lieu">
+<div><h2 style="color:var(--bg)">Nhận tài liệu miễn phí</h2>
+<p class="lead">Bộ 20 câu hỏi kiểm tra sức khỏe cột sống, hoặc checklist 50 công việc doanh nghiệp có thể tự động hóa bằng AI. Chọn mảng bạn quan tâm, tài liệu phù hợp sẽ được gửi cho bạn.</p></div>
+<form id="leadForm">
+<label style="color:var(--bg)">Họ tên<input name="name" required autocomplete="name"></label>
+<label style="color:var(--bg)">Số điện thoại<input name="phone" type="tel" required autocomplete="tel"></label>
+<label style="color:var(--bg)">Email<input name="email" type="email" required autocomplete="email"></label>
+<div class="opts"><label><input type="radio" name="int" value="Sức khỏe" checked>Sức khỏe</label><label><input type="radio" name="int" value="Kinh doanh">Kinh doanh</label><label><input type="radio" name="int" value="AI">AI</label></div>
+<button class="btn p" type="submit">Nhận tài liệu</button>
+<div class="ok" role="status"></div>
+</form></div>
+</div></section>
+
+<section id="dat-lich"><div class="w">
+<h2>Đặt lịch tư vấn</h2>
+<p class="lead">Điền thông tin, tôi sẽ xác nhận lịch qua Zalo hoặc email. Có thể thay bằng Calendly hoặc hệ thống booking riêng.</p>
+<form id="bookForm" style="margin-top:28px;max-width:720px">
+<label>Dịch vụ<select name="service" id="svcSel" required></select></label>
+<div class="two"><label>Ngày<input type="date" name="date" required></label><label>Giờ<select name="time" required><option>08:30</option><option>10:00</option><option>14:00</option><option>15:30</option><option>19:30</option></select></label></div>
+<div class="two"><label>Họ tên<input name="name" required autocomplete="name"></label><label>Số điện thoại<input name="phone" type="tel" required autocomplete="tel"></label></div>
+<label>Email<input name="email" type="email" required autocomplete="email"></label>
+<label>Nhu cầu của bạn<textarea name="need" rows="3" placeholder="Mô tả ngắn vấn đề bạn muốn giải quyết"></textarea></label>
+<button class="btn p" type="submit" style="justify-self:start">Đặt lịch tư vấn</button>
+<div class="ok" role="status"></div>
+</form>
+</div></section>
+
+<section class="alt" id="lien-he"><div class="w">
+<h2>Liên hệ</h2>
+<p class="lead"><b>Hồ Anh Bình</b><br>Y sĩ YHCT · HLV Yoga trị liệu cột sống</p>
+<div class="ch" id="channels"></div>
+<div class="cta"><a class="btn p" href="#dat-lich">Liên hệ với tôi</a></div>
+</div></section>
+</main>
+
+<footer><div class="w">
+<div class="logo">Hồ Anh Bình</div>
+<p>Cột sống khỏe – Cơ thể mạnh.<br>Dữ liệu đúng – Hệ thống thông minh.</p>
+<nav id="fnav"></nav>
+<small style="opacity:.6">Copyright 2026 Hồ Anh Bình.</small>
+</div></footer>
+<a class="btn p sticky" href="#dat-lich">Đặt lịch tư vấn</a>
+
+<script>
+/* ===== CONFIG: chỉnh nội dung tại đây (sẵn sàng nối CMS/Supabase/Sheets) ===== */
+const NAV=[["Trang chủ","#top"],["Về tôi","#ve-toi"],["Tôi có thể giúp gì?","#dich-vu"],["Chương trình tư vấn","#tu-van"],["Đào tạo","#dao-tao"],["Kiến thức","#kien-thuc"],["Case Study","#case-study"],["Liên hệ","#lien-he"]];
+const ABOUT=["Y sĩ Y học cổ truyền","HLV Yoga trị liệu cột sống","Nhiều năm nghiên cứu và chăm sóc cột sống","Kinh nghiệm xây dựng và vận hành trung tâm","Kinh nghiệm kinh doanh sản phẩm chăm sóc sức khỏe","Kinh nghiệm đào tạo và xây dựng quy trình","Ứng dụng AI, AppSheet và Automation vào quản trị doanh nghiệp"];
+const STATS=[[10,"+","năm kinh doanh"],[10,"+","năm nghiên cứu cột sống"],[10000,"+","khách hàng đã tiếp cận/phục vụ"],[100,"+","quy trình và hệ thống xây dựng/thử nghiệm"]];
+const SERVICES=[
+["Cột sống &amp; sức khỏe",["Chăm sóc cột sống","Đau lưng, vai gáy","Vận động","Dưỡng sinh","Thói quen sống khỏe"],"Xem chương trình","#tu-van"],
+["Coaching sức khỏe",["Coaching 21 ngày","Coaching 30 ngày","Chăm sóc cột sống tại nhà","Xây dựng thói quen vận động"],"Đăng ký coaching","#dat-lich"],
+["Quản trị &amp; kinh doanh",["KPI","Quy trình","Nhân sự","Marketing","CRM","Chăm sóc khách hàng","Xây dựng hệ thống vận hành"],"Đặt lịch tư vấn","#dat-lich"],
+["AI &amp; Automation",["AI cho doanh nghiệp","AI Assistant","AppSheet","CRM","Dashboard","Automation","Zalo + AI","Quản trị dữ liệu"],"Xây hệ thống cho tôi","#dat-lich"],
+["Đào tạo &amp; coaching",["Workshop","Đào tạo doanh nghiệp","Coaching 1-1","Khóa học online","Đào tạo AI + AppSheet","Đào tạo xây dựng hệ thống"],"Xem chương trình đào tạo","#dao-tao"]];
+const PATHS={h:{items:["Cột sống","Dưỡng sinh","Vận động","Thói quen sống khỏe","Coaching cá nhân"],cta:"Khám phá giải pháp sức khỏe",href:"#tu-van"},
+b:{items:["AI","Automation","CRM","AppSheet","KPI","Dashboard","Quy trình"],cta:"Khám phá giải pháp doanh nghiệp",href:"#tu-van"}};
+const STEPS=[["Khảo sát","Hiểu vấn đề và mục tiêu."],["Phân tích","Xác định nguyên nhân và điểm cần cải thiện."],["Thiết kế","Xây dựng giải pháp phù hợp."],["Đồng hành","Coaching, triển khai, đo lường và tối ưu."]];
+const PROGRAMS=[
+["Tư vấn Cột sống","60 phút","Đánh giá vấn đề và xây dựng hướng chăm sóc phù hợp."],
+["Coaching Sức khỏe","21/30 ngày","Đồng hành xây dựng thói quen vận động và chăm sóc cột sống."],
+["Tư vấn AI cho doanh nghiệp","60–90 phút","Xác định những công việc có thể ứng dụng AI và Automation."],
+["Tư vấn xây hệ thống quản trị","90 phút","Phân tích dữ liệu, quy trình, KPI và hệ thống quản trị."],
+["Coaching chủ doanh nghiệp","Theo chương trình","Đồng hành xây dựng hệ thống vận hành và tăng trưởng."]];
+const CASES=[
+["Xây dựng và vận hành trung tâm chăm sóc sức khỏe","Dịch vụ phụ thuộc vào cá nhân, thiếu chuẩn chung.","Chuẩn hóa dịch vụ và vai trò từng vị trí.","Quy trình đón khách, đánh giá, theo dõi.","Cập nhật số liệu thực tế tại đây."],
+["Thiết kế KPI cho đội ngũ","Mục tiêu đội ngũ chưa rõ, khó đánh giá.","Bộ KPI gắn với hành vi và kết quả.","Bảng KPI và nhịp họp tuần.","Cập nhật số liệu thực tế tại đây."],
+["Xây dựng hệ thống CRM","Thông tin khách rải rác, dễ sót chăm sóc.","Tập trung dữ liệu và lịch nhắc.","CRM theo vòng đời khách hàng.","Cập nhật số liệu thực tế tại đây."],
+["Ứng dụng AppSheet trong quản trị","Báo cáo thủ công, chậm và dễ sai.","Ứng dụng nhập liệu trên điện thoại.","AppSheet kết nối Google Sheets.","Cập nhật số liệu thực tế tại đây."],
+["Tự động hóa chăm sóc khách hàng","Nhắn tin tay, bỏ sót lịch tái khám.","Kịch bản nhắc lịch và hỏi thăm tự động.","Automation kết hợp Zalo.","Cập nhật số liệu thực tế tại đây."],
+["Xây dựng chương trình Marketing trải nghiệm","Khách chưa hiểu giá trị dịch vụ.","Buổi trải nghiệm có dẫn dắt.","Quy trình từ trải nghiệm đến tư vấn.","Cập nhật số liệu thực tế tại đây."],
+["Ứng dụng AI vào sản xuất nội dung","Làm nội dung tốn thời gian, thiếu nhất quán.","Quy trình viết với AI theo giọng thương hiệu.","Bộ prompt và lịch nội dung.","Cập nhật số liệu thực tế tại đây."],
+["Xây dựng hệ thống đào tạo","Nhân sự mới học lâu, mỗi người một kiểu.","Lộ trình học và bài kiểm tra.","Thư viện tài liệu và video nội bộ.","Cập nhật số liệu thực tế tại đây."]];
+const COURSES=[["AI cho chủ doanh nghiệp","Hiểu AI làm được gì cho công việc của bạn."],["AI + AppSheet","Tự dựng ứng dụng quản lý không cần code."],["Xây CRM","Quản lý khách hàng và lịch chăm sóc."],["Tự động hóa doanh nghiệp","Nối các công cụ để việc lặp lại tự chạy."],["Quản trị bằng dữ liệu","Đọc số liệu để ra quyết định."],["Xây KPI","Đặt chỉ tiêu rõ ràng cho từng vị trí."],["Xây hệ thống chăm sóc khách hàng","Quy trình giữ khách lâu dài."],["Xây thương hiệu cá nhân bằng AI","Làm nội dung đều đặn và có giọng riêng."]];
+const POSTS=[
+["Cột sống","Bài viết","5 thói quen buổi sáng giúp lưng nhẹ hơn"],["Cột sống","Video","Bài vận động cổ vai gáy cho dân văn phòng"],
+["Sức khỏe & Dưỡng sinh","Podcast","Dưỡng sinh bắt đầu từ giấc ngủ"],["Sức khỏe & Dưỡng sinh","Tài liệu","Bảng theo dõi thói quen 21 ngày"],
+["Kinh doanh & Quản trị","Bài viết","KPI đơn giản cho đội nhóm nhỏ"],["Kinh doanh & Quản trị","Bài viết","Vì sao quy trình đến trước phần mềm"],
+["AI & Automation","Video","Tự động nhắc lịch khách hàng qua Zalo"],["AI & Automation","Tài liệu","Checklist công việc có thể tự động hóa"]];
+const CHANNELS=[["Zalo","#"],["Facebook","#"],["YouTube","#"],["TikTok","#"],["Email","mailto:lienhe@example.com"],["Điện thoại","tel:+84000000000"]];
+
+/* Điểm nối tích hợp: thay bằng Supabase / Google Sheets / Zalo OA / email automation */
+async function submitLead(type,data){console.log("lead",type,data);return true}
+
+const $=s=>document.querySelector(s);
+$(".menu").innerHTML=NAV.map(n=>`<a href="${n[1]}">${n[0]}</a>`).join("");
+$("#drawer").innerHTML=NAV.map(n=>`<a href="${n[1]}">${n[0]}</a>`).join("");
+$("#fnav").innerHTML=["Về tôi|#ve-toi","Dịch vụ|#dich-vu","Đào tạo|#dao-tao","Kiến thức|#kien-thuc","Liên hệ|#lien-he"].map(x=>{x=x.split("|");return `<a href="${x[1]}">${x[0]}</a>`}).join("");
+const bg=$(".burger"),dr=$("#drawer");
+bg.onclick=()=>{const o=dr.classList.toggle("open");bg.setAttribute("aria-expanded",o)};
+dr.onclick=e=>{if(e.target.tagName==="A")dr.classList.remove("open")};
+
+$("#about").innerHTML=ABOUT.map(a=>`<li>${a}</li>`).join("");
+$("#stats").innerHTML=STATS.map(s=>`<div class="stat"><b data-n="${s[0]}" data-s="${s[1]}">${s[0].toLocaleString("vi-VN")}${s[1]}</b><span>${s[2]}</span></div>`).join("");
+$("#services").innerHTML=SERVICES.map(s=>`<div class="card rv"><h3>${s[0]}</h3><ul>${s[1].map(i=>`<li>${i}</li>`).join("")}</ul><a class="btn" href="${s[3]}">${s[2]}</a></div>`).join("");
+$("#steps").innerHTML=STEPS.map((s,i)=>`<div class="step rv"><i>${i+1}</i><div><h3>${s[0]}</h3><p>${s[1]}</p></div></div>`).join("");
+$("#programs").innerHTML=PROGRAMS.map((p,i)=>`<div class="card rv"><span class="meta">${p[1]}</span><h3>${p[0]}</h3><p style="color:var(--mute);font-size:.93rem">${p[2]}</p><button class="btn p book" data-i="${i}">Đặt lịch</button></div>`).join("");
+$("#cases").innerHTML=CASES.map(c=>`<details class="rv"><summary>${c[0]}</summary><dl><dt>Vấn đề</dt><dd>${c[1]}</dd><dt>Giải pháp</dt><dd>${c[2]}</dd><dt>Hệ thống</dt><dd>${c[3]}</dd><dt>Kết quả</dt><dd>${c[4]}</dd></dl></details>`).join("");
+$("#courses").innerHTML=COURSES.map(c=>`<div class="card rv"><h3>${c[0]}</h3><p style="color:var(--mute);font-size:.93rem">${c[1]}</p></div>`).join("");
+$("#channels").innerHTML=CHANNELS.map(c=>`<a href="${c[1]}">${c[0]}</a>`).join("");
+$("#svcSel").innerHTML=PROGRAMS.map(p=>`<option>${p[0]} (${p[1]})</option>`).join("");
+
+/* Giải pháp: chọn nhu cầu */
+function path(k){const p=PATHS[k];$("#path").innerHTML=`<div class="chips">${p.items.map(i=>`<span class="chip">${i}</span>`).join("")}</div><a class="btn p" href="${p.href}">${p.cta}</a>`}
+path("h");
+document.querySelectorAll(".tabs button").forEach(b=>b.onclick=()=>{document.querySelectorAll(".tabs button").forEach(x=>x.setAttribute("aria-selected",x===b));path(b.dataset.t)});
+
+/* Kiến thức: lọc chuyên mục */
+const CATS=["Tất cả",...new Set(POSTS.map(p=>p[0]))];let cat="Tất cả";
+function posts(){$("#filters").innerHTML=CATS.map(c=>`<button aria-pressed="${c===cat}" data-c="${c}">${c}</button>`).join("");
+$("#posts").innerHTML=POSTS.filter(p=>cat==="Tất cả"||p[0]===cat).map(p=>`<a href="#kien-thuc" class="card post"><span class="meta">${p[1]}</span><h3>${p[2]}</h3><small>${p[0]}</small></a>`).join("")}
+posts();$("#filters").onclick=e=>{if(e.target.dataset.c){cat=e.target.dataset.c;posts()}};
+
+/* Đặt lịch từ card chương trình */
+$("#programs").onclick=e=>{const b=e.target.closest(".book");if(!b)return;$("#svcSel").selectedIndex=+b.dataset.i;$("#dat-lich").scrollIntoView({behavior:"smooth"})};
+$("input[type=date]").min=new Date().toISOString().slice(0,10);
+
+/* Forms */
+function wire(id,type,msg){const f=$(id);f.onsubmit=async e=>{e.preventDefault();const d=Object.fromEntries(new FormData(f));
+await submitLead(type,d);const o=f.querySelector(".ok");o.textContent=msg.replace("{n}",d.name);o.classList.add("show");f.reset()}}
+wire("#leadForm","lead","Cảm ơn {n}. Tài liệu sẽ được gửi qua email của bạn.");
+wire("#bookForm","booking","Đã nhận yêu cầu của {n}. Tôi sẽ xác nhận lịch qua Zalo hoặc email trong thời gian sớm nhất.");
+
+/* Hiệu ứng: scroll reveal + đếm số (tôn trọng reduced motion) */
+const rm=matchMedia("(prefers-reduced-motion:reduce)").matches;
+if(!rm&&"IntersectionObserver"in window){
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add("in");io.unobserve(e.target)}}),{threshold:.1});
+document.querySelectorAll(".rv").forEach(el=>io.observe(el));
+const so=new IntersectionObserver(es=>es.forEach(e=>{if(!e.isIntersecting)return;so.unobserve(e.target);const el=e.target,n=+el.dataset.n,t0=performance.now();
+(function f(t){const p=Math.min((t-t0)/1200,1);el.textContent=Math.round(n*p).toLocaleString("vi-VN")+(p>=1?el.dataset.s:"");if(p<1)requestAnimationFrame(f)})(t0)}),{threshold:.6});
+document.querySelectorAll("[data-n]").forEach(el=>so.observe(el));
+}else document.querySelectorAll(".rv").forEach(el=>el.classList.add("in"));
+</script>
+</body>
+</html>
