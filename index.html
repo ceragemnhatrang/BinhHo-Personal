@@ -36,7 +36,7 @@ form{display:grid;gap:12px}label{font-weight:600;font-size:.92rem}input,select,t
 </style></head><body>
 <header><div class="wrap"><a class="brand" href="#top">HỒ ANH BÌNH</a>
 <button id="menuBtn" aria-expanded="false" aria-controls="nav">Menu</button>
-<nav id="nav" aria-label="Điều hướng chính"><a href="#top">Trang chủ</a><a href="#gioi-thieu">Giới thiệu</a><a href="#giai-phap">Giải pháp</a><a href="#dao-tao">Đào tạo</a><a href="#lien-he">Liên hệ</a><a class="btn" href="#dang-ky">Đăng ký tư vấn</a></nav></div></header>
+<nav id="nav" aria-label="Điều hướng chính"><a href="#top">Trang chủ</a><a href="#gioi-thieu">Giới thiệu</a><a href="#giai-phap">Giải pháp</a><a href="#lien-he">Liên hệ</a><a class="btn" href="#dang-ky">Đăng ký tư vấn</a></nav></div></header>
 <main id="top">
 <section class="hero"><div class="wrap grid"><div>
 <h1>Biến dữ liệu thành doanh thu. Biến AI thành lợi thế cạnh tranh.</h1>
@@ -49,7 +49,6 @@ form{display:grid;gap:12px}label{font-weight:600;font-size:.92rem}input,select,t
 
 <section id="giai-phap" class="alt-bg"><div class="wrap"><h2>Giải pháp và chương trình đào tạo</h2>
 <div class="cards" id="solutions"></div></div></section>
-<section id="dao-tao"><div class="wrap"><h2>Hình ảnh thực tế</h2><p>Các vị trí ảnh dưới đây sẽ được thay bằng ảnh thật khi bạn bổ sung (xem phần CONFIG.images).</p><div class="cards" id="gallery"></div></div></section>
 
 <section id="dang-ky"><div class="wrap formbox"><h2>Bạn đang muốn số hóa quy trình hoặc ứng dụng AI vào công việc?</h2>
 <p>Để lại thông tin để được liên hệ tư vấn. Thông tin chỉ dùng để liên hệ về nhu cầu bạn đăng ký.</p>
@@ -63,9 +62,8 @@ form{display:grid;gap:12px}label{font-weight:600;font-size:.92rem}input,select,t
 <label>Nội dung cần tư vấn<textarea name="message" rows="3" maxlength="1000"></textarea></label>
 <label class="chk"><input type="checkbox" name="consent" required> <span>Tôi đồng ý để Hồ Anh Bình sử dụng thông tin trên nhằm liên hệ tư vấn. *</span></label>
 <button class="btn" type="submit">Đăng ký tư vấn</button><div class="status" role="status" aria-live="polite"></div></form></div></section>
-<section id="lien-he" class="alt-bg"><div class="wrap"><h2>Liên hệ</h2><p>Thông tin điện thoại, email, Zalo và mạng xã hội sẽ được bổ sung khi bạn cung cấp. Hiện tại vui lòng dùng biểu mẫu đăng ký phía trên.</p></div></section>
 </main>
-<footer><div class="wrap fgrid"><div><strong>Hồ Anh Bình</strong><p>Đồng hành cùng cá nhân và doanh nghiệp trong số hóa dữ liệu, ứng dụng AI và phát triển năng lực kinh doanh.</p></div>
+<footer id="lien-he"><div class="wrap fgrid"><div><strong>Hồ Anh Bình</strong><p>Đồng hành cùng cá nhân và doanh nghiệp trong số hóa dữ liệu, ứng dụng AI và phát triển năng lực kinh doanh.</p></div>
 <div><strong>Giải pháp &amp; đào tạo</strong><ul id="fSol"></ul></div>
 <div><strong>Liên hệ &amp; mạng xã hội</strong><ul id="fContact"></ul></div></div>
 <div class="wrap" style="margin-top:20px">© <span id="yr"></span> Hồ Anh Bình.</div></footer>
@@ -75,14 +73,8 @@ form{display:grid;gap:12px}label{font-weight:600;font-size:.92rem}input,select,t
 const CONFIG = {
   endpoint: "",   // DÁN URL Web App của Google Apps Script vào đây (dạng https://script.google.com/macros/s/.../exec)
   // THÔNG TIN LIÊN HỆ: điền vào giữa dấu "" (Facebook/Youtube/Tiktok là link đầy đủ https://...)
-  contact: { phone:"", email:"", facebook:"", youtube:"", tiktok:"" },
-  video: { type:"youtube", url:"", thumb:"", title:"Video giới thiệu", desc:"" }, // type: "youtube" (url dạng https://www.youtube.com/embed/ID) hoặc "mp4"
-  images: [       // ảnh thực tế: điền src khi có ảnh
-    {src:"",alt:"Ảnh hoạt động tư vấn và đào tạo",label:"Ảnh tư vấn và đào tạo"},
-    {src:"",alt:"Ảnh lớp học, hội thảo hoặc sự kiện",label:"Ảnh lớp học / hội thảo"},
-    {src:"",alt:"Giao diện ứng dụng quản lý khách hàng",label:"Giao diện ứng dụng quản lý"},
-    {src:"",alt:"Dashboard số hóa dữ liệu",label:"Dashboard số hóa dữ liệu"}
-  ],
+  contact: { phone:"098.998.5253", zalo:"098.998.5253", email:"binh@doanhnghiep1nguoi.com", facebook:"https://www.facebook.com/hoanhbinhxd/", youtube:"https://www.youtube.com/@doanhnghiepmotnguoi", tiktok:"" },
+  video: { type:"youtube", url:"https://www.youtube.com/embed/Z26VDQUuBO8", thumb:"https://i.ytimg.com/vi/Z26VDQUuBO8/hqdefault.jpg", title:"Video giới thiệu", desc:"" }, // type: "youtube" (url dạng https://www.youtube.com/embed/ID) hoặc "mp4"
   // 7 nhóm nội dung: link đổi sang landing page riêng khi sẵn sàng ("#dang-ky" = cuộn tới form)
   solutions: [
     {icon:"📊",tag:"Giải pháp",title:"Số hóa dữ liệu để tối ưu lợi nhuận",desc:"Chuẩn hóa dữ liệu, theo dõi chỉ số, phân tích hoạt động kinh doanh để hỗ trợ tăng doanh thu, giảm chi phí.",link:"#dang-ky",cta:"Đăng ký tư vấn"},
@@ -107,11 +99,14 @@ document.querySelectorAll("#nav a").forEach(a=>a.onclick=()=>$("#nav").classList
  box.firstChild.onclick=()=>{box.innerHTML=v.type==="mp4"?'<video src="'+esc(v.url)+'" controls autoplay playsinline></video>':'<iframe src="'+esc(v.url)+(v.url.includes("?")?"&":"?")+'autoplay=1" title="'+esc(v.title)+'" allow="autoplay;encrypted-media;fullscreen" allowfullscreen></iframe>'}})();
 // Thẻ giải pháp
 $("#solutions").innerHTML=CONFIG.solutions.map(s=>'<article class="card"><span class="ico" aria-hidden="true">'+s.icon+'</span><span class="tag">'+esc(s.tag)+'</span><h3>'+esc(s.title)+'</h3><p>'+esc(s.desc)+'</p><a class="btn" href="'+esc(s.link)+'">'+esc(s.cta)+'</a></article>').join("");
-// Ảnh thực tế
-$("#gallery").innerHTML=CONFIG.images.map((i,n)=>i.src?'<img src="'+esc(i.src)+'" alt="'+esc(i.alt)+'" width="400" height="300" loading="lazy" style="width:100%;height:auto;border-radius:12px">':'<div class="ph" style="aspect-ratio:4/3">'+esc(i.label)+'<br>(chưa có ảnh)</div>').join("");
-// Liên hệ: có giá trị thì thành link, chưa có thì ghi "chưa cập nhật"
-(function(){const c=CONFIG.contact,L=[["Điện thoại","phone",v=>"tel:"+v.replace(/[^0-9+]/g,"")],["Email","email",v=>"mailto:"+v],["Facebook","facebook",v=>v],["Youtube","youtube",v=>v],["Tiktok","tiktok",v=>v]];
- $("#fContact").innerHTML=L.map(([n,k,h])=>c[k]?'<li>'+n+': <a href="'+esc(h(c[k]))+'"'+(["facebook","youtube","tiktok"].includes(k)?' target="_blank" rel="noopener"':'')+'>'+esc(c[k])+'</a></li>':'<li>'+n+': (chưa cập nhật)</li>').join("")})();
+// Liên hệ (footer): sửa trong CONFIG.contact. Mục nào để trống sẽ tự ẩn.
+(function(){const c=CONFIG.contact,d=v=>v.replace(/[^0-9]/g,""),o=' target="_blank" rel="noopener"',L=[];
+ if(c.phone)L.push('<li>Điện thoại / Zalo: <a href="tel:'+esc(d(c.phone))+'">'+esc(c.phone)+'</a> (<a href="https://zalo.me/'+esc(d(c.zalo||c.phone))+'"'+o+'>mở Zalo</a>)</li>');
+ if(c.email)L.push('<li>Email: <a href="mailto:'+esc(c.email)+'">'+esc(c.email)+'</a></li>');
+ if(c.facebook)L.push('<li>Facebook: <a href="'+esc(c.facebook)+'"'+o+'>'+esc(c.facebook)+'</a></li>');
+ if(c.youtube)L.push('<li>Youtube: <a href="'+esc(c.youtube)+'"'+o+'>'+esc(c.youtube)+'</a></li>');
+ if(c.tiktok)L.push('<li>Tiktok: <a href="'+esc(c.tiktok)+'"'+o+'>'+esc(c.tiktok)+'</a></li>');
+ $("#fContact").innerHTML=L.join("")})();
 // Footer + select
 $("#fSol").innerHTML=CONFIG.solutions.map(s=>'<li><a href="'+esc(s.link)+'">'+esc(s.title)+'</a></li>').join("");
 $("#interest").innerHTML='<option value="">-- Chọn --</option>'+CONFIG.solutions.map(s=>'<option>'+esc(s.title)+'</option>').join("");
