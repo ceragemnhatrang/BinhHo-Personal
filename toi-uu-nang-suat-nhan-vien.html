@@ -199,51 +199,6 @@
     </div>
   </section>
 
-  <section id="consult-form" class="form-section">
-    <div class="container">
-      <div class="form-card">
-        <span class="eyebrow" style="display:table;margin:0 auto 14px">Bắt đầu từ vấn đề của bạn</span>
-        <h2>Đăng ký tư vấn miễn phí</h2>
-        <p class="intro">Điền thông tin và chia sẻ vấn đề bạn muốn cải thiện. Tôi sẽ liên hệ để trao đổi bước tiếp theo.</p>
-        <form id="leadForm">
-          <div class="form-group">
-            <label for="name">Họ và tên *</label>
-            <input id="name" type="text" name="name" required autocomplete="name" placeholder="Nguyễn Văn A">
-          </div>
-          <div class="form-group">
-            <label for="email">Email *</label>
-            <input id="email" type="email" name="email" required autocomplete="email" placeholder="email@example.com">
-          </div>
-          <div class="form-group">
-            <label for="phone">Số điện thoại *</label>
-            <input id="phone" type="tel" name="phone" required autocomplete="tel" placeholder="0901234567">
-          </div>
-          <div class="form-group">
-            <label for="need">Nhu cầu tư vấn</label>
-            <select id="need" name="need">
-              <option value="">-- Chọn nhu cầu --</option>
-              <option value="Giao việc và phân công trách nhiệm">Giao việc và phân công trách nhiệm</option>
-              <option value="Thiết lập KPI và khoán chỉ tiêu">Thiết lập KPI và khoán chỉ tiêu</option>
-              <option value="Đào tạo và nâng cao năng suất nhân viên">Đào tạo và nâng cao năng suất nhân viên</option>
-              <option value="Tối ưu quy trình vận hành">Tối ưu quy trình vận hành</option>
-              <option value="Ứng dụng Google Sheets hoặc AppSheet">Ứng dụng Google Sheets hoặc AppSheet</option>
-              <option value="Khác">Khác</option>
-            </select>
-          </div>
-          <div class="form-group">
-            <label for="message">Vấn đề bạn muốn giải quyết *</label>
-            <textarea id="message" name="message" rows="4" required placeholder="Mô tả ngắn tình hình hiện tại và mục tiêu bạn muốn đạt được..."></textarea>
-          </div>
-          <input type="hidden" name="pageUrl" id="pageUrl">
-          <input type="hidden" name="pageTitle" id="pageTitle">
-          <button type="submit" id="submitBtn">Gửi thông tin đăng ký</button>
-          <div id="formMessage" role="status" aria-live="polite"></div>
-          <p class="form-privacy">Thông tin được sử dụng để liên hệ về yêu cầu cố vấn của bạn.</p>
-        </form>
-      </div>
-    </div>
-  </section>
-
   <section class="sec alt">
     <div class="wrap">
       <div class="sec-head">
@@ -263,7 +218,7 @@
     <div class="wrap">
       <h2>Bắt đầu bằng một vấn đề bạn thực sự muốn giải quyết.</h2>
       <p>Bạn không cần thay đổi tất cả cùng lúc. Hãy xác định đúng điểm nghẽn, chọn một bước cải thiện và bắt đầu đo lường kết quả.</p>
-      <a class="btn" href="#consult-form">Đăng ký cố vấn miễn phí →</a>
+      <a class="btn" href="/lien-he.html">Đăng ký cố vấn miễn phí →</a>
     </div>
   </section>
 </main>
@@ -271,53 +226,5 @@
 <div id="site-footer"></div>
 
 <script src="site.js"></script>
-<script>
-// ========== FORM SUBMISSION ==========
-const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbwHZYIu4DxUqUQQYaUNuhNhLYUo5fBKVqFr3lgp81JZItqX1153C7P1mKerSYpidx6X/exec";
-document.addEventListener("DOMContentLoaded", () => {
-  const pageUrl = document.getElementById("pageUrl");
-  const pageTitle = document.getElementById("pageTitle");
-  const form = document.getElementById("leadForm");
-  const messageEl = document.getElementById("formMessage");
-  const submitBtn = document.getElementById("submitBtn");
-  function fillPageInfo() {
-    pageUrl.value = window.location.href;
-    pageTitle.value = document.title;
-  }
-  fillPageInfo();
-  form.addEventListener("submit", async (e) => {
-    e.preventDefault();
-    submitBtn.disabled = true;
-    submitBtn.textContent = "Đang gửi...";
-    messageEl.className = "";
-    messageEl.textContent = "";
-    const formData = new FormData(form);
-    const data = Object.fromEntries(formData.entries());
-    try {
-      const res = await fetch(SCRIPT_URL, {
-        method: "POST",
-        body: JSON.stringify(data),
-        headers: { "Content-Type": "text/plain;charset=utf-8" }
-      });
-      if (!res.ok) throw new Error("HTTP " + res.status);
-      const result = await res.json();
-      if (result.status === "success") {
-        messageEl.className = "success";
-        messageEl.textContent = "Gửi thành công! Tôi sẽ liên hệ sớm.";
-        form.reset();
-        fillPageInfo();
-      } else {
-        throw new Error(result.message || "Submission failed");
-      }
-    } catch (err) {
-      messageEl.className = "error";
-      messageEl.textContent = "Chưa gửi được thông tin. Vui lòng thử lại hoặc liên hệ qua số điện thoại ở cuối trang.";
-    } finally {
-      submitBtn.disabled = false;
-      submitBtn.textContent = "Gửi thông tin đăng ký";
-    }
-  });
-});
-</script>
 </body>
 </html>
