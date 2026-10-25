@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Hồ Anh Bình – Dữ liệu và tự động hóa cho năng suất</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;700;800&display=swap">
+<link rel="stylesheet" href="site.css">
+</head>
+<body>
+
+<div id="site-header"></div>
+
+<main id="app"></main>
+
+<div id="site-footer"></div>
+
+<script src="site.js"></script>
+<script>
+/* =====================================================================
+   CẤU HÌNH CHUNG
+   ===================================================================== */
+const SITE = {
+  name: "Hồ Anh Bình",
+  about: "Chia sẻ cách tôi đã ứng dụng dữ liệu và tự động hóa để giảm công việc thủ công, nâng cao năng suất.",
+  email: "hoanhbinhxd@gmail.com",
+  phone: "0989985253",
+  video: ""
+};
+const FREE = [
+  { id:"so-hoa-du-lieu",   title:"Số hóa dữ liệu để tăng năng suất",
+    desc:"Chuyển việc ghi chép thủ công sang dữ liệu có cấu trúc để theo dõi và ra quyết định nhanh hơn." },
+  { id:"ai-quan-tri",      title:"Ứng dụng AI quản trị cho người mới",
+    desc:"Dùng AI để soạn báo cáo, tổng hợp số liệu và theo dõi công việc mà không cần biết lập trình." },
+  { id:"khoi-nghiep",      title:"Khởi nghiệp đổi mới sáng tạo cho người mới",
+    desc:"Từ ý tưởng đến thử nghiệm đầu tiên: kiểm chứng nhu cầu với chi phí thấp." },
+  { id:"ky-nang-ban-hang", title:"Kỹ năng bán hàng cho người mới",
+    desc:"Cách tìm hiểu khách hàng, trình bày giá trị và chốt đơn một cách tự nhiên." },
+  { id:"mo-hinh-trai-nghiem", title:"Kinh nghiệm vận hành mô hình trải nghiệm sản phẩm",
+    desc:"Thiết kế và vận hành không gian để khách hàng dùng thử trực tiếp trước khi mua." }
+];
+const LINKS = {
+  "so-hoa-du-lieu": "/toi-uu-nang-suat-nhan-vien.html",
+  "ai-quan-tri": "",
+  "khoi-nghiep": "",
+  "ky-nang-ban-hang": "",
+  "mo-hinh-trai-nghiem": ""
+};
+const link = f => LINKS[f.id] || "#";
+
+/* =====================================================================
+   MODULE
+   ===================================================================== */
+const ART = `<svg class="art" viewBox="0 0 360 260" role="img" aria-label="Minh họa dữ liệu và tự động hóa">
+<rect x="20" y="20" width="230" height="170" rx="10" fill="none" stroke="currentColor" stroke-width="3"/>
+<rect x="46" y="120" width="28" height="48" fill="currentColor"/>
+<rect x="88" y="96" width="28" height="72" fill="currentColor" opacity=".75"/>
+<rect x="130" y="70" width="28" height="98" fill="currentColor" opacity=".55"/>
+<rect x="172" y="46" width="28" height="122" fill="currentColor" opacity=".35"/>
+<path d="M250 105H300V190" fill="none" stroke="currentColor" stroke-width="3"/>
+<circle cx="300" cy="105" r="12" fill="currentColor"/>
+<path d="M50 230H310" fill="none" stroke="currentColor" stroke-width="3" stroke-dasharray="6 6"/>
+<circle cx="50" cy="230" r="12" fill="currentColor"/><circle cx="180" cy="230" r="12" fill="currentColor"/><circle cx="310" cy="230" r="12" fill="currentColor"/>
+</svg>`;
+const ytId = v => { v = String(v||""); const m = v.match(/(?:v=|youtu\.be\/|embed\/|shorts\/)([\w-]{11})/); return m ? m[1] : (/^[\w-]{11}$/.test(v) ? v : ""); };
+const VIDEO = () => { const id = ytId(SITE.video);
+  return `<div class="video"><div class="frame">${id
+    ? `<iframe src="https://www.youtube-nocookie.com/embed/${id}" title="Video giới thiệu ${SITE.name}" loading="lazy" allow="encrypted-media; picture-in-picture; fullscreen" allowfullscreen referrerpolicy="strict-origin-when-cross-origin"></iframe>`
+    : `<div class="ph"><svg viewBox="0 0 64 64" aria-hidden="true"><circle cx="32" cy="32" r="29" fill="none" stroke="currentColor" stroke-width="3"/><path d="M26 20L46 32L26 44Z" fill="currentColor"/></svg><strong>Video giới thiệu</strong><span>Dán link YouTube vào SITE.video</span></div>`}</div>
+  ${id ? `<a class="alt-link" href="https://www.youtube.com/watch?v=${id}" target="_blank" rel="noopener">Mở video trên YouTube</a>` : ""}</div>`; };
+const M = {
+  hero: d => `<section class="hero ${d.small?'sm':''}"><div class="wrap"><div class="${(d.art||d.video)?'hero-in':''}"><div>
+      <h1>${d.title}</h1><p>${d.text}</p>
+      ${(d.buttons||[]).map((b,i)=>`<a class="btn ${i?'ghost':''}" href="${b[1]}">${b[0]}</a>`).join("")}
+    </div>${d.video?VIDEO():d.art?ART:""}</div></div></section>`,
+  cards: d => `<section class="sec ${d.alt?'alt':''}"><div class="wrap">
+      <div class="sec-head"><h2>${d.title}</h2>${d.text?`<p>${d.text}</p>`:""}</div>
+      <div class="cards">${d.items.map(i=>{
+        const t = i.href?"a":"div";
+        return `<${t} class="card" ${i.href?`href="${i.href}"`:""}><h3>${i.title}</h3><p>${i.text}</p>${i.href?`<span class="more">Xem chi tiết</span>`:""}</${t}>`}).join("")}</div>
+    </div></section>`,
+  steps: d => `<section class="sec ${d.alt?'alt':''}"><div class="wrap">
+      <div class="sec-head"><h2>${d.title}</h2></div>
+      <div class="steps">${d.items.map(i=>`<div class="step"><div><h3>${i.title}</h3><p>${i.text}</p></div></div>`).join("")}</div>
+    </div></section>`,
+  split: d => `<section class="sec ${d.alt?'alt':''}"><div class="wrap split">
+      <div><h2>${d.title}</h2>${d.paras.map(p=>`<p>${p}</p>`).join("")}</div>
+      <div class="panel"><h3>${d.side.title}</h3>${d.side.html}</div>
+    </div></section>`,
+  faq: d => `<section class="sec ${d.alt?'alt':''}"><div class="wrap">
+      <div class="sec-head"><h2>${d.title}</h2></div>
+      <div class="faq">${d.items.map(i=>`<details><summary>${i.q}</summary><p>${i.a}</p></details>`).join("")}</div>
+    </div></section>`,
+  cta: d => `<section class="cta"><div class="wrap"><h2>${d.title}</h2><p>${d.text}</p>
+      <a class="btn" href="${d.button[1]}">${d.button[0]}</a></div></section>`
+};
+
+const landing = f => [
+  {t:"hero", d:{small:true, title:f.title, text:f.desc, buttons:[["Nhận chia sẻ miễn phí","#/lien-he"],["Xem chủ đề khác","#/chia-se"]]}},
+  {t:"cards", d:{title:"Bạn sẽ nhận được", items:[
+    {title:"Nội dung thực tế", text:"Ví dụ và cách làm đã áp dụng, không lý thuyết dài dòng."},
+    {title:"Mẫu và công cụ", text:"Biểu mẫu, checklist hoặc bảng tính dùng được ngay."},
+    {title:"Hỗ trợ trao đổi", text:"Giải đáp thắc mắc qua email hoặc điện thoại."}]}},
+  {t:"steps", d:{alt:true, title:"Lộ trình áp dụng", items:[
+    {title:"Xác định vấn đề", text:"Chọn một công việc đang tốn nhiều thời gian nhất."},
+    {title:"Làm thử quy mô nhỏ", text:"Áp dụng trong một tuần với một nhóm hoặc một quy trình."},
+    {title:"Đo kết quả và mở rộng", text:"So sánh thời gian trước và sau, rồi nhân rộng."}]}},
+  {t:"faq", d:{title:"Câu hỏi thường gặp", items:[
+    {q:"Chia sẻ này có mất phí không?", a:"Không. Toàn bộ nội dung trong mục Chia sẻ miễn phí đều miễn phí."},
+    {q:"Tôi chưa có kinh nghiệm thì có theo kịp không?", a:"Có. Nội dung được xây dựng cho người mới bắt đầu."}]}},
+  {t:"cta", d:{title:"Bắt đầu từ một bước nhỏ", text:"Liên hệ để nhận tài liệu và được trao đổi trực tiếp.", button:["Liên hệ ngay","#/lien-he"]}}
+];
+
+/* =====================================================================
+   CÁC TRANG
+   ===================================================================== */
+const freeCards = FREE.map(f=>({title:f.title, text:f.desc, href:link(f)}));
+const PAGES = {
+  "": {title:"Trang chủ", mods:[
+    {t:"hero", d:{video:true, title:"Dữ liệu và tự động hóa giúp công việc nhẹ hơn, năng suất cao hơn",
+      text:SITE.about, buttons:[["Xem chia sẻ miễn phí","#/chia-se"],["Liên hệ","#/lien-he"]]}},
+    {t:"cards", d:{title:"Chia sẻ miễn phí", text:"Năm chủ đề từ kinh nghiệm thực tế, dành cho người mới bắt đầu.", items:freeCards}},
+    {t:"cta", d:{title:"Bạn muốn giảm việc thủ công trong công việc của mình?", text:"Gửi câu hỏi, tôi sẽ trao đổi lại.", button:["Liên hệ","#/lien-he"]}}
+  ]},
+  "gioi-thieu": {title:"Giới thiệu", mods:[
+    {t:"hero", d:{small:true, title:"Giới thiệu", text:"Xin chào, tôi là "+SITE.name+"."}},
+    {t:"split", d:{title:"Về tôi", paras:[
+      "Nội dung giới thiệu: quá trình làm việc, lĩnh vực chuyên môn và lý do bạn chia sẻ kiến thức miễn phí.",
+      SITE.about],
+      side:{title:"Thông tin nhanh", html:"<p>Lĩnh vực: dữ liệu, tự động hóa, quản trị.</p><p>Đối tượng: người mới bắt đầu.</p>"}}},
+    {t:"cards", d:{alt:true, title:"Bạn có thể học gì ở đây", items:freeCards.slice(0,3)}},
+    {t:"cta", d:{title:"Cùng trao đổi", text:"Liên hệ để kết nối.", button:["Liên hệ","#/lien-he"]}}
+  ]},
+  "chia-se": {title:"Chia sẻ miễn phí", mods:[
+    {t:"hero", d:{small:true, title:"Chia sẻ miễn phí", text:"Chọn chủ đề phù hợp để bắt đầu."}},
+    {t:"cards", d:{title:"Tất cả chủ đề", items:freeCards}}
+  ]},
+  "lien-he": {title:"Liên hệ", mods:[
+    {t:"hero", d:{small:true, title:"Liên hệ", text:"Gửi email hoặc gọi điện, tôi sẽ phản hồi sớm nhất."}},
+    {t:"cards", d:{title:"Thông tin liên hệ", items:[
+      {title:"Email", text:`<a href="mailto:${SITE.email}">${SITE.email}</a>`},
+      {title:"Điện thoại", text:`<a href="tel:${SITE.phone}">${SITE.phone}</a>`}]}}
+  ]}
+};
+FREE.forEach(f => { PAGES[f.id] = {title:f.title, mods: landing(f)}; });
+
+function render(){
+  const key = location.hash.replace(/^#\/?/, "");
+  const p = PAGES[key] || PAGES[""];
+  document.getElementById("app").innerHTML = p.mods.map(m => M[m.t](m.d)).join("");
+  document.title = (key ? p.title + " – " : "") + SITE.name;
+  window.scrollTo(0,0);
+}
+addEventListener("hashchange", render);
+document.addEventListener("DOMContentLoaded", render);
+</script>
+</body>
+</html>
