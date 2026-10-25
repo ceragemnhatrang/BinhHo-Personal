@@ -12,7 +12,6 @@
 <div id="site-header"></div>
 
 <main id="app"></main>
-<div id="form-module"></div>
 <div id="site-footer"></div>
 
 <script src="site.js"></script>
@@ -30,21 +29,15 @@ const SITE = {
 const FREE = [
   { id:"so-hoa-du-lieu",   title:"Số hóa dữ liệu để tăng năng suất",
     desc:"Chuyển việc ghi chép thủ công sang dữ liệu có cấu trúc để theo dõi và ra quyết định nhanh hơn." },
-  { id:"ai-quan-tri",      title:"Ứng dụng AI quản trị cho người mới",
-    desc:"Dùng AI để soạn báo cáo, tổng hợp số liệu và theo dõi công việc mà không cần biết lập trình." },
-  { id:"khoi-nghiep",      title:"Khởi nghiệp đổi mới sáng tạo cho người mới",
+  { id:"quan-tri-bang-du-lieu",      title:"Đừng để Zalo và giấy tờ nuốt công ty bạn",
+    desc:"Từ hỗn loạn tin nhắn – thất lạc hồ sơ… đến quản trị mọi hoạt động chỉ bằng một chiếc điện thoại." },
+  { id:"doi-moi-kinh-doanh",      title:"Khởi nghiệp đổi mới sáng tạo cho người mới",
     desc:"Từ ý tưởng đến thử nghiệm đầu tiên: kiểm chứng nhu cầu với chi phí thấp." },
-  { id:"ky-nang-ban-hang", title:"Kỹ năng bán hàng cho người mới",
-    desc:"Cách tìm hiểu khách hàng, trình bày giá trị và chốt đơn một cách tự nhiên." },
-  { id:"mo-hinh-trai-nghiem", title:"Kinh nghiệm vận hành mô hình trải nghiệm sản phẩm",
-    desc:"Thiết kế và vận hành không gian để khách hàng dùng thử trực tiếp trước khi mua." }
 ];
 const LINKS = {
   "so-hoa-du-lieu": "/toi-uu-nang-suat-nhan-vien.html",
-  "ai-quan-tri": "",
+  "ai-quan-tri": "/so-hoa-quan-tri.html",
   "khoi-nghiep": "",
-  "ky-nang-ban-hang": "",
-  "mo-hinh-trai-nghiem": ""
 };
 const link = f => LINKS[f.id] || "#";
 
@@ -96,7 +89,7 @@ const M = {
 };
 
 const landing = f => [
-  {t:"hero", d:{small:true, title:f.title, text:f.desc, buttons:[["Nhận chia sẻ miễn phí","#/lien-he"],["Xem chủ đề khác","#/chia-se"]]}},
+  {t:"hero", d:{small:true, title:f.title, text:f.desc, buttons:[["Tư vấn miễn phí","/lien-he.html"],["Xem chủ đề khác","#/chia-se"]]}},
   {t:"cards", d:{title:"Bạn sẽ nhận được", items:[
     {title:"Nội dung thực tế", text:"Ví dụ và cách làm đã áp dụng, không lý thuyết dài dòng."},
     {title:"Mẫu và công cụ", text:"Biểu mẫu, checklist hoặc bảng tính dùng được ngay."},
@@ -108,7 +101,7 @@ const landing = f => [
   {t:"faq", d:{title:"Câu hỏi thường gặp", items:[
     {q:"Chia sẻ này có mất phí không?", a:"Không. Toàn bộ nội dung trong mục Chia sẻ miễn phí đều miễn phí."},
     {q:"Tôi chưa có kinh nghiệm thì có theo kịp không?", a:"Có. Nội dung được xây dựng cho người mới bắt đầu."}]}},
-  {t:"cta", d:{title:"Bắt đầu từ một bước nhỏ", text:"Liên hệ để nhận tài liệu và được trao đổi trực tiếp.", button:["Liên hệ ngay","#/lien-he"]}}
+  {t:"cta", d:{title:"Bắt đầu từ một bước nhỏ", text:"Liên hệ để nhận tài liệu và được trao đổi trực tiếp.", button:["Liên hệ ngay","/lien-he.html"]}}
 ];
 
 /* =====================================================================
@@ -118,9 +111,9 @@ const freeCards = FREE.map(f=>({title:f.title, text:f.desc, href:link(f)}));
 const PAGES = {
   "": {title:"Trang chủ", mods:[
     {t:"hero", d:{video:true, title:"Dữ liệu và tự động hóa giúp công việc nhẹ hơn, năng suất cao hơn",
-      text:SITE.about, buttons:[["Xem chia sẻ miễn phí","#/chia-se"],["Liên hệ","#/lien-he"]]}},
+      text:SITE.about, buttons:[["Xem chia sẻ miễn phí","#/chia-se"],["Liên hệ","/lien-he.html"]]}},
     {t:"cards", d:{title:"Chia sẻ miễn phí", text:"Năm chủ đề từ kinh nghiệm thực tế, dành cho người mới bắt đầu.", items:freeCards}},
-    {t:"cta", d:{title:"Bạn muốn giảm việc thủ công trong công việc của mình?", text:"Gửi câu hỏi, tôi sẽ trao đổi lại.", button:["Liên hệ","#/lien-he"]}}
+    {t:"cta", d:{title:"Bạn muốn giảm việc thủ công trong công việc của mình?", text:"Gửi câu hỏi, tôi sẽ trao đổi lại.", button:["Liên hệ","/lien-he.html"]}}
   ]},
   "gioi-thieu": {title:"Giới thiệu", mods:[
     {t:"hero", d:{small:true, title:"Giới thiệu", text:"Xin chào, tôi là "+SITE.name+"."}},
@@ -129,7 +122,7 @@ const PAGES = {
       SITE.about],
       side:{title:"Thông tin nhanh", html:"<p>Lĩnh vực: dữ liệu, tự động hóa, quản trị.</p><p>Đối tượng: người mới bắt đầu.</p>"}}},
     {t:"cards", d:{alt:true, title:"Bạn có thể học gì ở đây", items:freeCards.slice(0,3)}},
-    {t:"cta", d:{title:"Cùng trao đổi", text:"Liên hệ để kết nối.", button:["Liên hệ","#/lien-he"]}}
+    {t:"cta", d:{title:"Cùng trao đổi", text:"Liên hệ để kết nối.", button:["Liên hệ","/lien-he.html"]}}
   ]},
   "chia-se": {title:"Chia sẻ miễn phí", mods:[
     {t:"hero", d:{small:true, title:"Chia sẻ miễn phí", text:"Chọn chủ đề phù hợp để bắt đầu."}},
