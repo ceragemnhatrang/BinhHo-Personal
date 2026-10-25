@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Hồ Anh Bình – tư vấn số hóa và tối ưu quản trị cho doanh nghiệp nhỏ. Chuẩn hóa quy trình, quản lý dữ liệu, ứng dụng AppSheet và tự động hóa phù hợp với nguồn lực doanh nghiệp.">
+  <meta name="theme-color" content="#102b3f">
+  <title>Hồ Anh Bình | Tư vấn số hóa và tối ưu quản trị doanh nghiệp</title>
+  <style>
+    :root {
+      --navy: #102b3f;
+      --teal: #287d83;
+      --teal-light: #eaf4f2;
+      --ink: #1d2b34;
+      --muted: #61717b;
+      --line: #dce5e8;
+      --surface: #f6f9fa;
+      --white: #fff;
+      --radius: 18px;
+      --shadow: 0 12px 32px rgba(16,43,63,.08);
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      color: var(--ink);
+      background: var(--white);
+      font-family: Inter, "Segoe UI", Arial, sans-serif;
+      line-height: 1.65;
+      -webkit-font-smoothing: antialiased;
+    }
+    img { display: block; max-width: 100%; }
+    a { color: inherit; }
+    .container { width: min(1120px, calc(100% - 40px)); margin-inline: auto; }
+    .site-header {
+      background: rgba(255,255,255,.96);
+      border-bottom: 1px solid var(--line);
+      position: sticky; top: 0; z-index: 10;
+      backdrop-filter: blur(12px);
+    }
+    .nav { min-height: 74px; display: flex; align-items: center; justify-content: space-between; gap: 24px; }
+    .brand { color: var(--navy); font-size: 1rem; font-weight: 800; text-decoration: none; letter-spacing: .02em; }
+    .brand small { display: block; font-size: .72rem; color: var(--muted); font-weight: 600; letter-spacing: .09em; text-transform: uppercase; }
+    .nav-links { display: flex; align-items: center; gap: 24px; }
+    .nav-links a { text-decoration: none; color: #41535e; font-size: .92rem; font-weight: 600; }
+    .nav-links a:hover { color: var(--teal); }
+    .button {
+      display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+      padding: 13px 20px; border-radius: 999px; background: var(--teal); color: white;
+      text-decoration: none; font-weight: 700; border: 1px solid var(--teal);
+      transition: transform .2s ease, background .2s ease;
+    }
+    .button:hover { background: #21686d; transform: translateY(-1px); }
+    .button-outline { color: var(--navy); background: transparent; border-color: #b9cbd1; }
+    .button-outline:hover { background: #eef4f5; color: var(--navy); }
+    .hero { background: var(--navy); color: white; overflow: hidden; }
+    .hero-grid { display: grid; grid-template-columns: 1.05fr .95fr; align-items: center; gap: 56px; padding-block: 76px; }
+    .eyebrow { display: inline-block; color: #a9d9d5; text-transform: uppercase; font-weight: 800; letter-spacing: .12em; font-size: .78rem; margin-bottom: 14px; }
+    h1, h2, h3, p { margin-top: 0; }
+    h1 { font-size: clamp(2.35rem, 5vw, 4.3rem); line-height: 1.08; letter-spacing: -.045em; margin-bottom: 22px; }
+    .hero p { font-size: 1.1rem; color: #e0e9ef; max-width: 620px; margin-bottom: 28px; }
+    .hero-actions { display: flex; flex-wrap: wrap; gap: 12px; }
+    .hero .button-outline { color: white; border-color: #78909e; }
+    .hero .button-outline:hover { background: rgba(255,255,255,.1); }
+    .hero-image-wrap { position: relative; }
+    .hero-image { width: 100%; aspect-ratio: 4/3; object-fit: cover; border-radius: 24px; border: 1px solid rgba(255,255,255,.18); box-shadow: 0 24px 70px rgba(0,0,0,.22); }
+    .image-note { color: #c7d8df; font-size: .8rem; margin-top: 12px; }
+    .section { padding-block: 82px; }
+    .section-soft { background: var(--surface); }
+    .section-tint { background: var(--teal-light); }
+    .section-heading { max-width: 760px; margin-bottom: 36px; }
+    .section-heading .eyebrow { color: var(--teal); }
+    h2 { color: var(--navy); font-size: clamp(1.85rem, 3.5vw, 2.7rem); line-height: 1.17; letter-spacing: -.03em; margin-bottom: 14px; }
+    .section-heading p { color: var(--muted); font-size: 1.05rem; margin-bottom: 0; }
+    .problem-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+    .card { background: white; border: 1px solid var(--line); border-radius: var(--radius); padding: 26px; box-shadow: var(--shadow); }
+    .icon-box { width: 48px; height: 48px; display: grid; place-items: center; border-radius: 14px; background: var(--teal-light); color: var(--teal); margin-bottom: 18px; }
+    .icon-box svg { width: 25px; height: 25px; }
+    h3 { color: var(--navy); font-size: 1.13rem; line-height: 1.35; margin-bottom: 10px; }
+    .card p { color: var(--muted); font-size: .96rem; margin-bottom: 0; }
+    .callout { margin-top: 26px; padding: 22px 26px; border-left: 4px solid var(--teal); background: white; border-radius: 0 14px 14px 0; color: #40545f; }
+    .solution-list { display: grid; gap: 22px; }
+    .solution { display: grid; grid-template-columns: 250px 1fr; gap: 28px; align-items: center; background: white; padding: 18px; border: 1px solid var(--line); border-radius: var(--radius); }
+    .solution img { width: 100%; height: 190px; object-fit: cover; border-radius: 12px; background: #e4ecee; }
+    .step { color: var(--teal); font-size: .78rem; font-weight: 800; letter-spacing: .1em; text-transform: uppercase; margin-bottom: 8px; }
+    .solution p { color: var(--muted); margin-bottom: 0; }
+    .about-grid { display: grid; grid-template-columns: .85fr 1.15fr; gap: 56px; align-items: center; }
+    .about-photo { width: 100%; aspect-ratio: 4/5; object-fit: cover; border-radius: 22px; background: #e4ecee; }
+    .about-copy p { color: var(--muted); }
+    .credential-list { list-style: none; padding: 0; margin: 22px 0 0; display: grid; gap: 14px; }
+    .credential-list li { display: grid; grid-template-columns: 25px 1fr; gap: 10px; align-items: start; }
+    .check { color: var(--teal); font-weight: 900; }
+    .note { font-size: .85rem; color: var(--muted); margin-top: 20px; }
+    .systems-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
+    .system-card { padding: 24px 20px; background: white; border: 1px solid var(--line); border-radius: 16px; }
+    .system-card .icon-box { margin-bottom: 15px; }
+    .system-card p { color: var(--muted); font-size: .9rem; margin-bottom: 0; }
+    .audience-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+    .audience-item { display: flex; gap: 12px; align-items: flex-start; padding: 18px; border: 1px solid var(--line); background: white; border-radius: 14px; }
+    .audience-item .check { font-size: 1.1rem; }
+    .final-cta { padding: 62px 0; background: var(--navy); color: white; }
+    .final-cta-inner { display: flex; justify-content: space-between; align-items: center; gap: 32px; }
+    .final-cta h2 { color: white; max-width: 720px; margin-bottom: 10px; }
+    .final-cta p { color: #d5e2e8; margin-bottom: 0; max-width: 700px; }
+    .site-footer { background: #0b2030; color: #d5e2e8; padding: 28px 0; }
+    .footer-inner { display: flex; align-items: center; justify-content: space-between; gap: 20px; }
+    .footer-inner p { margin: 0; font-size: .88rem; }
+    .footer-tagline { color: #a9c1cc; font-size: .8rem !important; }
+    @media (max-width: 900px) {
+      .hero-grid { gap: 32px; }
+      .problem-grid { grid-template-columns: 1fr; }
+      .systems-grid { grid-template-columns: repeat(2, 1fr); }
+      .about-grid { gap: 32px; }
+      .solution { grid-template-columns: 210px 1fr; }
+    }
+    @media (max-width: 680px) {
+      .container { width: min(100% - 30px, 1120px); }
+      .nav { min-height: 66px; }
+      .nav-links { display: none; }
+      .nav .button { padding: 10px 14px; font-size: .85rem; }
+      .hero-grid { grid-template-columns: 1fr; padding-block: 52px; }
+      h1 { font-size: clamp(2.35rem, 11vw, 3.4rem); }
+      .hero p { font-size: 1rem; }
+      .section { padding-block: 58px; }
+      .solution { grid-template-columns: 1fr; gap: 18px; padding: 14px; }
+      .solution img { height: 210px; }
+      .about-grid { grid-template-columns: 1fr; }
+      .about-photo { aspect-ratio: 16/10; max-height: 360px; }
+      .systems-grid, .audience-grid { grid-template-columns: 1fr; }
+      .final-cta-inner, .footer-inner { flex-direction: column; align-items: flex-start; }
+    }
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <div class="container nav">
+      <a class="brand" href="#top">HỒ ANH BÌNH<small>Vietcare Consulting</small></a>
+      <nav class="nav-links" aria-label="Điều hướng chính">
+        <a href="#van-de">Vấn đề</a>
+        <a href="#giai-phap">Giải pháp</a>
+        <a href="#ve-toi">Về tôi</a>
+      </nav>
+      <a class="button" href="#lien-he">Trao đổi giải pháp</a>
+    </div>
+  </header>
+
+  <main id="top">
+    <section class="hero">
+      <div class="container hero-grid">
+        <div>
+          <span class="eyebrow">Tư vấn số hóa & quản trị doanh nghiệp</span>
+          <h1>Số hóa quản trị.<br>Tối ưu vận hành.<br>Tăng trưởng bền vững.</h1>
+          <p>Tôi giúp chủ doanh nghiệp nhỏ xây dựng hệ thống quản trị tinh gọn bằng dữ liệu, ứng dụng và tự động hóa, để kiểm soát công việc tốt hơn và nâng cao hiệu quả kinh doanh.</p>
+          <div class="hero-actions">
+            <a class="button" href="#giai-phap">Khám phá giải pháp <span aria-hidden="true">→</span></a>
+            <a class="button button-outline" href="#ve-toi">Tìm hiểu về tôi</a>
+          </div>
+        </div>
+        <div class="hero-image-wrap">
+          <img class="hero-image" src="/Images/hero-business-consulting.jpg" alt="Chủ doanh nghiệp nhỏ xem báo cáo và trao đổi về quản trị" onerror="this.onerror=null;this.src='/Images/hero-business-consulting.png';">
+          <div class="image-note">Giải pháp thực tế · Chi phí phù hợp · Triển khai theo nhu cầu</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-soft" id="van-de">
+      <div class="container">
+        <div class="section-heading">
+          <span class="eyebrow">Những điểm nghẽn thường gặp</span>
+          <h2>Doanh nghiệp đang bận rộn, nhưng đã vận hành hiệu quả?</h2>
+          <p>Khi dữ liệu rời rạc, quy trình chưa rõ ràng và báo cáo làm thủ công, chủ doanh nghiệp khó có đủ thời gian tập trung vào tăng trưởng.</p>
+        </div>
+        <div class="problem-grid">
+          <article class="card">
+            <div class="icon-box"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="4" y="3" width="16" height="18" rx="2"/><path d="M8 7h8M8 11h8M8 15h5"/></svg></div>
+            <h3>Dữ liệu phân tán, quản lý thủ công</h3>
+            <p>Thông tin khách hàng, doanh thu, kho hàng và công nợ nằm ở nhiều file Excel, sổ sách hoặc ứng dụng riêng lẻ.</p>
+          </article>
+          <article class="card">
+            <div class="icon-box"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="9" cy="8" r="3"/><path d="M3 20v-1a6 6 0 0 1 12 0v1M16 5.5a3 3 0 0 1 0 5.8M18 14a5 5 0 0 1 3 4.6V20"/></svg></div>
+            <h3>Khó theo dõi hiệu suất nhân viên</h3>
+            <p>Thiếu quy trình chuẩn, KPI rõ ràng và công cụ theo dõi tiến độ khiến chủ doanh nghiệp phải thường xuyên đôn đốc.</p>
+          </article>
+          <article class="card">
+            <div class="icon-box"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 3v18h18"/><path d="m7 14 4-4 3 3 6-7"/><path d="M16 6h4v4"/></svg></div>
+            <h3>Khó nhìn thấy điểm nghẽn kinh doanh</h3>
+            <p>Chưa có bức tranh rõ ràng về bán hàng, chăm sóc khách hàng, chi phí và năng suất vận hành để ra quyết định kịp thời.</p>
+          </article>
+        </div>
+        <div class="callout"><strong>Nếu doanh nghiệp vẫn phụ thuộc vào trí nhớ của chủ, báo cáo thủ công và việc nhắc nhở liên tục,</strong> đã đến lúc chuẩn hóa quy trình và dữ liệu.</div>
+      </div>
+    </section>
+
+    <section class="section section-tint" id="giai-phap">
+      <div class="container">
+        <div class="section-heading">
+          <span class="eyebrow">Cách tiếp cận của tôi</span>
+          <h2>Bắt đầu từ bài toán quản trị, không bắt đầu từ phần mềm</h2>
+          <p>Tôi cùng doanh nghiệp hiểu hiện trạng, xác định vấn đề ưu tiên và lựa chọn công cụ phù hợp với ngân sách, đội ngũ và mục tiêu kinh doanh.</p>
+        </div>
+        <div class="solution-list">
+          <article class="solution">
+            <img src="/Images/solution-process.jpg" alt="Khảo sát và xây dựng quy trình vận hành doanh nghiệp" loading="lazy" onerror="this.onerror=null;this.src='/Images/solution-process.png';">
+            <div>
+              <div class="step">Bước 01</div>
+              <h3>Khảo sát và chuẩn hóa quy trình</h3>
+              <p>Phân tích quy trình bán hàng, chăm sóc khách hàng, kho, kế toán quản trị và công việc nhân sự; xác định khâu cần cải thiện trước.</p>
+            </div>
+          </article>
+          <article class="solution">
+            <img src="/Images/solution-appsheet.jpg" alt="Ứng dụng quản trị doanh nghiệp trên máy tính và điện thoại" loading="lazy" onerror="this.onerror=null;this.src='/Images/solution-appsheet.png';">
+            <div>
+              <div class="step">Bước 02</div>
+              <h3>Xây dựng ứng dụng quản trị phù hợp</h3>
+              <p>Thiết kế ứng dụng theo nhu cầu bằng AppSheet, Google Sheets và các công cụ phù hợp để quản lý khách hàng, đơn hàng, tồn kho, công việc và KPI.</p>
+            </div>
+          </article>
+          <article class="solution">
+            <img src="/Images/solution-automation.jpg" alt="Báo cáo quản trị và quy trình tự động hóa" loading="lazy" onerror="this.onerror=null;this.src='/Images/solution-automation.png';">
+            <div>
+              <div class="step">Bước 03</div>
+              <h3>Tự động hóa và đo lường hiệu quả</h3>
+              <p>Tự động hóa các tác vụ lặp lại, tổng hợp báo cáo và thiết lập chỉ số quản trị để hỗ trợ người quản lý ra quyết định dựa trên dữ liệu.</p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="ve-toi">
+      <div class="container about-grid">
+        <div>
+          <img class="about-photo" src="/Images/ho-anh-binh.jpg" alt="Chân dung Hồ Anh Bình" loading="lazy" onerror="this.onerror=null;this.src='/Images/ho-anh-binh.png';">
+        </div>
+        <div class="about-copy">
+          <span class="eyebrow" style="color:var(--teal)">Người đồng hành cùng doanh nghiệp</span>
+          <h2>Hồ Anh Bình</h2>
+          <h3>Vietcare Consulting · Tư vấn số hóa và quản trị doanh nghiệp</h3>
+          <p>Tôi tiếp cận số hóa từ góc nhìn của người làm kinh doanh và vận hành thực tế, không chỉ từ góc độ công nghệ. Mục tiêu là giúp doanh nghiệp tạo ra hệ thống dễ sử dụng, dễ theo dõi và có thể cải tiến theo thời gian.</p>
+          <ul class="credential-list">
+            <li><span class="check">✓</span><span><strong>Kinh nghiệm kinh doanh thực tế:</strong> khoảng 10 năm trong lĩnh vực sản phẩm và dịch vụ sức khỏe.</span></li>
+            <li><span class="check">✓</span><span><strong>Hiểu mô hình vận hành dịch vụ:</strong> từ thu hút khách hàng, trải nghiệm, chăm sóc, tư vấn bán hàng đến theo dõi kết quả.</span></li>
+            <li><span class="check">✓</span><span><strong>Nền tảng quản trị:</strong> thạc sĩ quản trị dự án – quản trị kinh doanh.</span></li>
+            <li><span class="check">✓</span><span><strong>Ứng dụng công nghệ thiết thực:</strong> dữ liệu, AppSheet, công cụ AI và tự động hóa phù hợp với nguồn lực doanh nghiệp nhỏ.</span></li>
+          </ul>
+          <p class="note">Giải pháp được thiết kế theo hiện trạng, ngân sách và năng lực triển khai của từng doanh nghiệp. Không mặc định rằng mọi vấn đề đều cần một phần mềm mới.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-soft">
+      <div class="container">
+        <div class="section-heading">
+          <span class="eyebrow">Năng lực giải pháp</span>
+          <h2>Những hệ thống có thể cùng doanh nghiệp xây dựng</h2>
+          <p>Ưu tiên những phần việc giúp doanh nghiệp có dữ liệu đáng tin cậy, quy trình rõ ràng và khả năng kiểm soát hoạt động tốt hơn.</p>
+        </div>
+        <div class="systems-grid">
+          <article class="system-card">
+            <div class="icon-box"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="9" cy="8" r="3"/><path d="M3 20v-1a6 6 0 0 1 12 0v1M17 8h4M19 6v4"/></svg></div>
+            <h3>Quản lý khách hàng</h3><p>Lưu trữ dữ liệu, lịch sử giao dịch, chăm sóc và tái mua.</p>
+          </article>
+          <article class="system-card">
+            <div class="icon-box"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="m3 7 9-4 9 4-9 4-9-4Z"/><path d="M3 12l9 4 9-4M3 17l9 4 9-4"/></svg></div>
+            <h3>Quản lý kho và đơn hàng</h3><p>Theo dõi nhập xuất tồn, đơn hàng và cảnh báo tồn kho.</p>
+          </article>
+          <article class="system-card">
+            <div class="icon-box"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 3v18h18"/><path d="M7 15v-4M12 15V6M17 15V9"/></svg></div>
+            <h3>Dashboard quản trị</h3><p>Theo dõi doanh thu, chi phí, KPI và hiệu quả kinh doanh.</p>
+          </article>
+          <article class="system-card">
+            <div class="icon-box"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><path d="M10 6h4M17.5 10v4M10 17.5h4"/></svg></div>
+            <h3>Quy trình & tự động hóa</h3><p>Chuẩn hóa công việc, giảm nhập liệu lặp lại và tổng hợp báo cáo.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <div class="section-heading">
+          <span class="eyebrow">Dành cho ai?</span>
+          <h2>Phù hợp với doanh nghiệp muốn quản trị bài bản hơn</h2>
+        </div>
+        <div class="audience-grid">
+          <div class="audience-item"><span class="check">✓</span><span>Chủ doanh nghiệp nhỏ và vừa muốn chuẩn hóa hệ thống quản trị.</span></div>
+          <div class="audience-item"><span class="check">✓</span><span>Trung tâm dịch vụ, chăm sóc sức khỏe, giáo dục và kinh doanh theo mô hình trải nghiệm khách hàng.</span></div>
+          <div class="audience-item"><span class="check">✓</span><span>Doanh nghiệp đang quản lý bằng Excel, Google Sheets hoặc nhiều công cụ rời rạc.</span></div>
+          <div class="audience-item"><span class="check">✓</span><span>Đội ngũ muốn ứng dụng AI và tự động hóa nhưng chưa biết bắt đầu từ đâu.</span></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="final-cta" id="lien-he">
+      <div class="container final-cta-inner">
+        <div>
+          <h2>Bắt đầu số hóa từ vấn đề doanh nghiệp đang gặp phải</h2>
+          <p>Trao đổi về những điểm nghẽn trong quản trị, quy trình nên ưu tiên số hóa và phương án triển khai phù hợp với nguồn lực doanh nghiệp.</p>
+        </div>
+        <a class="button" href="mailto:contact@vietcareconsulting.vn?subject=Trao%20doi%20ve%20so%20hoa%20doanh%20nghiep">Liên hệ trao đổi <span aria-hidden="true">→</span></a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <div>
+        <p><strong>Hồ Anh Bình | Vietcare Consulting</strong></p>
+        <p class="footer-tagline">Xây dựng hệ thống vận hành, marketing và đào tạo cho doanh nghiệp dịch vụ.</p>
+      </div>
+      <p>© <span id="year">2026</span> Vietcare Consulting</p>
+    </div>
+  </footer>
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
