@@ -36,8 +36,8 @@ const FREE = [
 ];
 const LINKS = {
   "so-hoa-du-lieu": "/toi-uu-nang-suat-nhan-vien.html",
-  "ai-quan-tri": "/so-hoa-quan-tri.html",
-  "khoi-nghiep": "",
+  "quan-tri-bang-du-lieu": "/so-hoa-quan-tri.html",
+  "doi-moi-kinh-doanh": "",
 };
 const link = f => LINKS[f.id] || "#";
 
@@ -112,7 +112,7 @@ const PAGES = {
   "": {title:"Trang chủ", mods:[
     {t:"hero", d:{video:true, title:"Dữ liệu và tự động hóa giúp công việc nhẹ hơn, năng suất cao hơn",
       text:SITE.about, buttons:[["Xem chia sẻ miễn phí","#/chia-se"],["Liên hệ","/lien-he.html"]]}},
-    {t:"cards", d:{title:"Chia sẻ miễn phí", text:"Năm chủ đề từ kinh nghiệm thực tế, dành cho người mới bắt đầu.", items:freeCards}},
+    {t:"cards", d:{title:"Tư vấn miễn phí", text:"Từ hỗn loạn thông tin đến quản trị mọi hoạt động chỉ bằng một chiếc điện thoại.", items:freeCards}},
     {t:"cta", d:{title:"Bạn muốn giảm việc thủ công trong công việc của mình?", text:"Gửi câu hỏi, tôi sẽ trao đổi lại.", button:["Liên hệ","/lien-he.html"]}}
   ]},
   "gioi-thieu": {title:"Giới thiệu", mods:[
