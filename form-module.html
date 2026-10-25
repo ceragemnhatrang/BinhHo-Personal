@@ -1,0 +1,161 @@
+<!-- form-module.html – Module form + Telegram dùng chung. Nạp bằng fetch vào <div id="form-module"></div> -->
+<section id="consult-form" class="form-section">
+  <div class="container">
+    <div class="form-card">
+      <span class="eyebrow" style="display:table;margin:0 auto 14px">Bắt đầu từ vấn đề của bạn</span>
+      <h2>Đăng ký tư vấn miễn phí</h2>
+      <p class="intro">Điền thông tin và chia sẻ vấn đề bạn muốn cải thiện. Tôi sẽ liên hệ để trao đổi bước tiếp theo.</p>
+
+      <form id="leadForm">
+        <div class="form-group">
+          <label for="name">Họ và tên *</label>
+          <input id="name" type="text" name="name" required autocomplete="name" placeholder="Nguyễn Văn A">
+        </div>
+        <div class="form-group">
+          <label for="email">Email *</label>
+          <input id="email" type="email" name="email" required autocomplete="email" placeholder="email@example.com">
+        </div>
+        <div class="form-group">
+          <label for="phone">Số điện thoại *</label>
+          <input id="phone" type="tel" name="phone" required autocomplete="tel" placeholder="0901234567">
+        </div>
+        <div class="form-group">
+          <label for="need">Nhu cầu tư vấn</label>
+          <select id="need" name="need">
+            <option value="">-- Chọn nhu cầu --</option>
+            <option value="Giao việc và phân công trách nhiệm">Giao việc và phân công trách nhiệm</option>
+            <option value="Thiết lập KPI và khoán chỉ tiêu">Thiết lập KPI và khoán chỉ tiêu</option>
+            <option value="Đào tạo và nâng cao năng suất nhân viên">Đào tạo và nâng cao năng suất nhân viên</option>
+            <option value="Tối ưu quy trình vận hành">Tối ưu quy trình vận hành</option>
+            <option value="Ứng dụng Google Sheets hoặc AppSheet">Ứng dụng Google Sheets hoặc AppSheet</option>
+            <option value="Khác">Khác</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="message">Vấn đề bạn muốn giải quyết *</label>
+          <textarea id="message" name="message" rows="4" required placeholder="Mô tả ngắn tình hình hiện tại và mục tiêu bạn muốn đạt được..."></textarea>
+        </div>
+
+        <input type="hidden" name="pageUrl" id="pageUrl">
+        <input type="hidden" name="pageTitle" id="pageTitle">
+
+        <button type="submit" id="submitBtn">Gửi thông tin đăng ký</button>
+        <div id="formMessage" role="status" aria-live="polite"></div>
+        <p class="form-privacy">Thông tin được sử dụng để liên hệ về yêu cầu cố vấn của bạn.</p>
+      </form>
+    </div>
+  </div>
+</section>
+
+<style>
+.form-section { padding: 70px 0; background: #F8F9FA; }
+.form-section .container { max-width: 680px; margin: 0 auto; padding: 0 20px; }
+.form-card { background: #fff; border: 1px solid #E1E4EA; border-radius: 12px; padding: clamp(22px,4vw,38px); box-shadow: 0 12px 35px rgba(11,42,91,.06); }
+.form-section h2 { text-align: center; margin-bottom: 10px; }
+.form-section .intro { text-align: center; color: #666; margin-bottom: 30px; }
+.form-group { margin-bottom: 18px; }
+.form-group label { display: block; margin-bottom: 7px; font-weight: 700; }
+.form-group input,
+.form-group select,
+.form-group textarea {
+  width: 100%; padding: 13px; border: 1px solid #D5D9E0; border-radius: 8px;
+  font: inherit; font-size: 15px; background: #fff; color: #111;
+}
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus { outline: 3px solid #D9E5FA; border-color: #0B2A5B; }
+.form-group textarea { resize: vertical; }
+#submitBtn {
+  width: 100%; padding: 15px; background: #0B2A5B; color: #fff; border: 0;
+  border-radius: 8px; font: inherit; font-weight: 800; font-size: 16px; cursor: pointer;
+}
+#submitBtn:hover { background: #143A7A; }
+#submitBtn:disabled { opacity: .65; cursor: wait; }
+#formMessage { margin-top: 15px; text-align: center; font-weight: 600; }
+.success { color: #177245; }
+.error { color: #B42318; }
+.form-privacy { text-align: center; color: #4B5563; font-size: 12px; margin: 14px 0 0; }
+.eyebrow { display: inline-block; font-size: 12px; font-weight: 800; letter-spacing: .09em; text-transform: uppercase; color: #0B2A5B; background: #E8EEF8; border-radius: 999px; padding: 6px 11px; }
+</style>
+
+<script>
+// ========== CẤU HÌNH ==========
+const TELEGRAM_BOT_TOKEN = "8904021955:AAEiu18Eqsn3cjbEI1x7yVpu8tHB-1lHWZM";   // Thay bằng Bot Token
+const TELEGRAM_CHAT_ID = "8171055638";       // Thay bằng Chat ID
+const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbwHZYIu4DxUqUQQYaUNuhNhLYUo5fBKVqFr3lgp81JZItqX1153C7P1mKerSYpidx6X/exec"; // Có thể để trống nếu không dùng
+
+document.addEventListener("DOMContentLoaded", () => {
+  const pageUrl = document.getElementById("pageUrl");
+  const pageTitle = document.getElementById("pageTitle");
+  const form = document.getElementById("leadForm");
+  const messageEl = document.getElementById("formMessage");
+  const submitBtn = document.getElementById("submitBtn");
+
+  function fillPageInfo() {
+    if (pageUrl) pageUrl.value = window.location.href;
+    if (pageTitle) pageTitle.value = document.title;
+  }
+  fillPageInfo();
+
+  if (form) {
+    form.addEventListener("submit", async (e) => {
+      e.preventDefault();
+      submitBtn.disabled = true;
+      submitBtn.textContent = "Đang gửi...";
+      messageEl.className = "";
+      messageEl.textContent = "";
+
+      const formData = new FormData(form);
+      const data = Object.fromEntries(formData.entries());
+
+      // 1. Gửi Telegram
+      try {
+        const telegramMessage = `🔔 *Có đăng ký tư vấn mới!*\n\n` +
+          `👤 *Họ tên:* ${data.name || "Không có"}\n` +
+          `📧 *Email:* ${data.email || "Không có"}\n` +
+          `📱 *SĐT:* ${data.phone || "Không có"}\n` +
+          `🎯 *Nhu cầu:* ${data.need || "Không chọn"}\n` +
+          `💬 *Lời nhắn:* ${data.message || "Không có"}\n\n` +
+          `🔗 *Trang:* ${data.pageTitle || ""}\n` +
+          `🌐 *URL:* ${data.pageUrl || ""}`;
+
+        await fetch(`https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendMessage`, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            chat_id: TELEGRAM_CHAT_ID,
+            text: telegramMessage,
+            parse_mode: "Markdown"
+          })
+        });
+      } catch (err) {
+        console.warn("Telegram error:", err);
+      }
+
+      // 2. Gửi về Google Apps Script (nếu có SCRIPT_URL)
+      if (SCRIPT_URL) {
+        try {
+          const res = await fetch(SCRIPT_URL, {
+            method: "POST",
+            body: JSON.stringify(data),
+            headers: { "Content-Type": "text/plain;charset=utf-8" }
+          });
+          const result = await res.json();
+          if (result.status !== "success") throw new Error();
+        } catch (err) {
+          console.warn("Apps Script error:", err);
+        }
+      }
+
+      // Thông báo thành công
+      messageEl.className = "success";
+      messageEl.textContent = "Gửi thành công! Tôi sẽ liên hệ sớm.";
+      form.reset();
+      fillPageInfo();
+
+      submitBtn.disabled = false;
+      submitBtn.textContent = "Gửi thông tin đăng ký";
+    });
+  }
+});
+</script>
