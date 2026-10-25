@@ -19,8 +19,8 @@
     var form = document.getElementById("leadForm");
     if (!form) return;
 
-    var TELEGRAM_BOT_TOKEN = "YOUR_BOT_TOKEN_HERE";
-    var TELEGRAM_CHAT_ID = "YOUR_CHAT_ID_HERE";
+    var TELEGRAM_BOT_TOKEN = "8904021955:AAEiu18Eqsn3cjbEI1x7yVpu8tHB-1lHWZM";
+    var TELEGRAM_CHAT_ID = "8171055638";
     var SCRIPT_URL = "https://script.google.com/macros/s/AKfycbwHZYIu4DxUqUQQYaUNuhNhLYUo5fBKVqFr3lgp81JZItqX1153C7P1mKerSYpidx6X/exec";
 
     var pageUrl = document.getElementById("pageUrl");
