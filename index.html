@@ -56,7 +56,7 @@ const ART = `<svg class="art" viewBox="0 0 360 260" role="img" aria-label="Minh 
 <circle cx="50" cy="230" r="12" fill="currentColor"/><circle cx="180" cy="230" r="12" fill="currentColor"/><circle cx="310" cy="230" r="12" fill="currentColor"/>
 </svg>`;
 const ytId = v => { v = String(v||""); const m = v.match(/(?:v=|youtu\.be\/|embed\/|shorts\/)([\w-]{11})/); return m ? m[1] : (/^[\w-]{11}$/.test(v) ? v : ""); };
-const VIDEO = () => { const id = ytId(SITE.video);
+const VIDEO = () => { const id = ytId(https://www.youtube.com/watch?v=8sQ-h7P894A);
   return `<div class="video"><div class="frame">${id
     ? `<iframe src="https://www.youtube-nocookie.com/embed/${id}" title="Video giới thiệu ${SITE.name}" loading="lazy" allow="encrypted-media; picture-in-picture; fullscreen" allowfullscreen referrerpolicy="strict-origin-when-cross-origin"></iframe>`
     : `<div class="ph"><svg viewBox="0 0 64 64" aria-hidden="true"><circle cx="32" cy="32" r="29" fill="none" stroke="currentColor" stroke-width="3"/><path d="M26 20L46 32L26 44Z" fill="currentColor"/></svg><strong>Video giới thiệu</strong><span>Dán link YouTube vào SITE.video</span></div>`}</div>
