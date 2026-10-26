@@ -8,10 +8,10 @@
 :root[data-theme="dark"]{--bg:#0A1426;--surface:#101E38;--text:#E6EBF5;--muted:#9FAAC2;--line:#22345A;--head:#FFFFFF;--navy:#2F5FB3;--navy-2:#4A78C8;--blue-ink:#8DB2F2;color-scheme:dark}
 html{scroll-padding-top:env(safe-area-inset-top,0px)}
 *{box-sizing:border-box}
-body{margin:0;background:var(--bg);color:var(--text);font:14px/1.65 "Be Vietnam Pro",system-ui,"Segoe UI",Arial,sans-serif}
+body{margin:0;background:var(--bg);color:var(--text);font:16px/1.65 "Be Vietnam Pro",system-ui,"Segoe UI",Arial,sans-serif}
 a{color:inherit;text-decoration:none}
 h1,h2,h3{color:var(--head);line-height:1.25;margin:0 0 .5em}
-h1{font-size:34px;font-weight:800}h2{font-size:24px;font-weight:800}h3{font-size:16px;font-weight:700}
+h1{font-size:38px;font-weight:800}h2{font-size:28px;font-weight:800}h3{font-size:18px;font-weight:700}
 p{margin:0 0 1em}
 :focus-visible{outline:3px solid var(--blue-ink);outline-offset:2px}
 .wrap{max-width:1080px;margin:0 auto;padding:0 20px}
