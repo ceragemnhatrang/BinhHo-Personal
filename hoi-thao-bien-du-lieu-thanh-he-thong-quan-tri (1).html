@@ -1,0 +1,268 @@
+<!doctype html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>Hội thảo miễn phí: Biến dữ liệu thành hệ thống quản trị | Hồ Anh Bình</title>
+  <meta name="description" content="Hội thảo miễn phí dành cho chủ doanh nghiệp nhỏ: biến dữ liệu rời rạc thành hệ thống quản trị có cảnh báo, tự động hóa, Dashboard KPI và AI phân tích. Không cần biết code." />
+  <meta property="og:title" content="Biến dữ liệu thành hệ thống quản trị thông minh" />
+  <meta property="og:description" content="Hội thảo miễn phí cho chủ doanh nghiệp nhỏ. Không cần biết code, không cần học IT." />
+  <meta property="og:type" content="website" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;600;700;800&display=swap" />
+  <link rel="stylesheet" href="site.css" />
+  <style>
+    /* Phần bổ sung riêng cho trang này – dùng biến màu của site.css nên tự theo giao diện sáng/tối */
+    .kicker{display:inline-block;font-size:13px;font-weight:800;letter-spacing:.06em;color:var(--blue-ink);margin-bottom:10px}
+    .dash{background:var(--bg);border:2px solid var(--navy);border-radius:8px;padding:16px;width:100%;max-width:420px;justify-self:center}
+    .dash-top{display:flex;justify-content:space-between;font-size:12px;font-weight:800;color:var(--blue-ink);margin-bottom:12px}
+    .dash-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+    .dash-grid div{background:var(--surface);border:1px solid var(--line);border-radius:6px;padding:10px 12px}
+    .dash-grid small{display:block;color:var(--muted);font-size:12px}
+    .dash-grid strong{font-size:22px;color:var(--head)}
+    .dash-alert{margin-top:10px;border-left:4px solid var(--navy);background:var(--surface);padding:10px 12px;border-radius:6px;font-size:14px;color:var(--text)}
+    .flow{display:flex;gap:12px;align-items:stretch;flex-wrap:wrap;margin-bottom:24px}
+    .flow .node{flex:1 1 180px;background:var(--bg);border:1px solid var(--line);border-top:4px solid var(--navy);border-radius:6px;padding:16px}
+    .flow .node b{display:block;color:var(--blue-ink);font-size:15px;letter-spacing:.04em}
+    .flow .node span{color:var(--muted)}
+    .flow .arrow{align-self:center;font-weight:800;color:var(--blue-ink);font-size:20px}
+    .tag{display:inline-block;margin-top:8px;padding:4px 10px;border-radius:999px;font-size:13px;font-weight:700;background:var(--surface);border:1px solid var(--line);color:var(--muted)}
+    .tag.good{background:var(--navy);border-color:var(--navy);color:#fff}
+    .checks{list-style:none;margin:0 0 16px;padding:0;display:grid;gap:10px}
+    .checks li{display:flex;gap:10px;align-items:flex-start}
+    .checks li::before{content:"✓";flex:none;width:24px;height:24px;border-radius:50%;background:var(--navy);color:#fff;font-weight:800;font-size:13px;display:grid;place-items:center;margin-top:2px}
+    .quote{border-left:4px solid var(--navy);padding:4px 0 4px 16px;color:var(--muted);margin:0 0 1em}
+    /* Form đăng ký */
+    #leadForm{display:grid;gap:12px}
+    #leadForm label{display:grid;gap:4px;font-weight:700;color:var(--head)}
+    #leadForm input,#leadForm select,#leadForm textarea{font:inherit;color:var(--text);background:var(--bg);border:1px solid var(--line);border-radius:6px;padding:10px 12px;width:100%}
+    #leadForm textarea{min-height:90px;resize:vertical}
+    #leadForm .btn{cursor:pointer;margin:4px 0 0;font:inherit;font-weight:700}
+    #leadForm .btn:disabled{opacity:.6;cursor:wait}
+    #formMessage{min-height:1.4em;font-weight:700}
+    #formMessage.success{color:var(--blue-ink)}
+    #formMessage.error{color:#B42318}
+    @media(max-width:820px){.flow .arrow{display:none}}
+  </style>
+</head>
+<body>
+
+<div id="site-header"></div>
+
+<main>
+
+  <!-- ===== HERO ===== -->
+  <section class="hero">
+    <div class="wrap hero-in">
+      <div>
+        <span class="kicker">HỘI THẢO MIỄN PHÍ</span>
+        <h1>Doanh nghiệp có dữ liệu, nhưng bạn có thực sự nắm được doanh nghiệp?</h1>
+        <p>Biến dữ liệu rời rạc thành hệ thống quản trị có thể cảnh báo, tự động hóa, hiển thị KPI và hỗ trợ AI phân tích.</p>
+        <p><strong>Không cần biết code. Không cần học IT.</strong></p>
+        <a class="btn" href="#dang-ky">Đăng ký hội thảo</a>
+        <a class="btn ghost" href="#cau-chuyen">Xem câu chuyện thực tế</a>
+      </div>
+
+      <div class="dash" role="img" aria-label="Minh họa Dashboard quản trị doanh nghiệp với doanh thu, khách mới, tiến độ KPI và cảnh báo">
+        <div class="dash-top"><span>QUẢN TRỊ DOANH NGHIỆP</span><span>● LIVE</span></div>
+        <div class="dash-grid">
+          <div><small>Doanh thu</small><strong>186M</strong></div>
+          <div><small>Khách mới</small><strong>38</strong></div>
+          <div><small>Tiến độ KPI</small><strong>82%</strong></div>
+          <div><small>Cần xử lý</small><strong>17</strong></div>
+        </div>
+        <div class="dash-alert"><b>Cảnh báo:</b> một chỉ số quan trọng vừa vượt ngưỡng.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== NỖI ĐAU ===== -->
+  <section class="sec">
+    <div class="wrap">
+      <div class="sec-head">
+        <span class="kicker">NỖI ĐAU QUẢN TRỊ</span>
+        <h2>Rất nhiều dữ liệu, nhưng người chủ vẫn không nắm được số liệu</h2>
+        <p>Excel và Google Sheet vẫn đầy đủ, nhưng bạn phải mở nhiều file, hỏi nhân viên hoặc chờ báo cáo mới biết chuyện gì đang xảy ra.</p>
+      </div>
+      <div class="cards">
+        <div class="card"><h3>Chỉ số bất thường</h3><p>Không biết chỉ số nào đang bất thường cho đến khi đã muộn.</p></div>
+        <div class="card"><h3>Báo cáo chậm</h3><p>Báo cáo phụ thuộc vào con người, đến tay chủ thì số liệu đã cũ.</p></div>
+        <div class="card"><h3>Khó theo dõi KPI</h3><p>Mục tiêu và KPI nằm rải rác, khó biết đang đạt đến đâu.</p></div>
+        <div class="card"><h3>Khó ra quyết định</h3><p>Dữ liệu nhiều nhưng khó biến thành quyết định cụ thể.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== CÂU CHUYỆN ===== -->
+  <section class="sec alt" id="cau-chuyen">
+    <div class="wrap split">
+      <div>
+        <span class="kicker">CÂU CHUYỆN THỰC TẾ</span>
+        <h2>Tôi từng chi khoảng 20 triệu mỗi năm cho phần mềm quản lý</h2>
+        <p class="quote">Phần mềm tốt chưa chắc đã phù hợp với mô hình kinh doanh của bạn.</p>
+      </div>
+      <div>
+        <p>Tôi từng nghĩ chỉ cần có một phần mềm tốt thì quản lý sẽ đơn giản hơn. Nhưng mô hình kinh doanh của tôi có những điểm khác biệt, khiến tôi vẫn phải thích nghi doanh nghiệp với phần mềm và dùng thêm Excel, Google Sheet.</p>
+        <p>Rồi tôi biết bộ công cụ Google (Sheet – App – Script) và đưa nó vào quản trị hoạt động thực tế: dữ liệu được ghi nhận, hệ thống tự động xử lý, chỉ số quan trọng được cảnh báo, và Dashboard giúp tôi nhìn thấy tình hình doanh nghiệp ngay lập tức.</p>
+        <p>Quan trọng hơn, dữ liệu đã ghi nhận có thể đưa vào AI để phân tích xu hướng, hiệu suất và hỗ trợ dự báo.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== DATA -> ACTION -> DECISION ===== -->
+  <section class="sec">
+    <div class="wrap">
+      <div class="sec-head">
+        <span class="kicker">DỮ LIỆU LÀ CHÌA KHÓA</span>
+        <h2>Từ dữ liệu đến quyết định</h2>
+      </div>
+      <div class="flow">
+        <div class="node"><b>DATA</b><span>Thu thập dữ liệu</span></div>
+        <div class="arrow" aria-hidden="true">→</div>
+        <div class="node"><b>ACTION</b><span>Tự động hóa và cảnh báo</span></div>
+        <div class="arrow" aria-hidden="true">→</div>
+        <div class="node"><b>DECISION</b><span>Dashboard và AI phân tích</span></div>
+      </div>
+      <div class="cards">
+        <div class="card"><h3>Thu thập</h3><p>Nhập dữ liệu trên điện thoại hoặc máy tính.</p></div>
+        <div class="card"><h3>Tự động hóa</h3><p>Dữ liệu thay đổi có thể kích hoạt hành động.</p></div>
+        <div class="card"><h3>Cảnh báo</h3><p>Hệ thống chủ động báo khi chỉ số bất thường.</p></div>
+        <div class="card"><h3>Dashboard</h3><p>Nhìn doanh thu, khách hàng, KPI và mục tiêu.</p></div>
+        <div class="card"><h3>AI</h3><p>Phân tích xu hướng, hiệu suất và hỗ trợ dự báo.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== SO SÁNH ===== -->
+  <section class="sec alt">
+    <div class="wrap">
+      <div class="sec-head">
+        <span class="kicker">SỰ KHÁC BIỆT</span>
+        <h2>Đừng chỉ lưu dữ liệu. Hãy vận hành dữ liệu.</h2>
+      </div>
+      <div class="split">
+        <div class="panel">
+          <h3>Trước đây</h3>
+          <p>Nhập dữ liệu → Google Sheet → tổng hợp → báo cáo → hỏi lại → phát hiện vấn đề → xử lý.</p>
+          <span class="tag">Thủ công • Chậm • Phụ thuộc</span>
+        </div>
+        <div class="panel">
+          <h3>Với cách mới</h3>
+          <p>Nhập dữ liệu → tự động xử lý → cảnh báo → Dashboard → AI phân tích → quyết định.</p>
+          <span class="tag good">Chủ động • Nhanh • Có hệ thống</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== ĐỐI TƯỢNG ===== -->
+  <section class="sec">
+    <div class="wrap">
+      <div class="sec-head">
+        <span class="kicker">DÀNH CHO</span>
+        <h2>Chủ doanh nghiệp, quản lý và lãnh đạo</h2>
+      </div>
+      <div class="cards">
+        <div class="card"><h3>Chủ doanh nghiệp</h3><p>Nắm tình hình mà không phải liên tục hỏi nhân viên.</p></div>
+        <div class="card"><h3>Quản lý</h3><p>Kiểm soát công việc, KPI và hiệu suất bằng số liệu.</p></div>
+        <div class="card"><h3>Hộ kinh doanh</h3><p>Quản lý khách hàng, doanh thu và hoạt động trên điện thoại.</p></div>
+        <div class="card"><h3>Người dùng cá nhân</h3><p>Biến dữ liệu hiện tại thành hệ thống linh hoạt hơn.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== NỘI DUNG HỘI THẢO ===== -->
+  <section class="sec alt">
+    <div class="wrap split">
+      <div>
+        <span class="kicker">TẠI HỘI THẢO</span>
+        <h2>Bạn sẽ nhìn thấy gì?</h2>
+        <p>Tập trung vào bài toán quản trị thực tế, không đi sâu vào kỹ thuật.</p>
+      </div>
+      <div>
+        <ul class="checks">
+          <li>Sự khác biệt giữa quản trị truyền thống và quản trị bằng dữ liệu.</li>
+          <li>Cách biến dữ liệu thành ứng dụng quản lý.</li>
+          <li>Cách thiết lập cảnh báo và tự động hóa.</li>
+          <li>Cách xây Dashboard phục vụ quản trị.</li>
+          <li>Cách kết hợp dữ liệu với AI để phân tích.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== CÁC BƯỚC ===== -->
+  <section class="sec">
+    <div class="wrap">
+      <div class="sec-head">
+        <span class="kicker">LỘ TRÌNH ĐƠN GIẢN</span>
+        <h2>Bắt đầu như thế nào?</h2>
+      </div>
+      <div class="steps">
+        <div class="step"><div><h3>Đăng ký hội thảo</h3><p>Để lại thông tin bên dưới, hoàn toàn miễn phí.</p></div></div>
+        <div class="step"><div><h3>Xem cách làm trên dữ liệu thực tế</h3><p>Từ nhập liệu, cảnh báo, Dashboard đến AI phân tích.</p></div></div>
+        <div class="step"><div><h3>Áp dụng cho doanh nghiệp của bạn</h3><p>Bắt đầu từ chính dữ liệu bạn đang có trong Excel hoặc Google Sheet.</p></div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== FAQ ===== -->
+  <section class="sec alt">
+    <div class="wrap">
+      <div class="sec-head"><h2>Câu hỏi thường gặp</h2></div>
+      <div class="faq">
+        <details><summary>Tôi không biết code thì có theo được không?</summary><p>Được. Hội thảo tập trung vào bài toán quản trị thực tế, không yêu cầu kiến thức lập trình hay IT.</p></details>
+        <details><summary>Hội thảo có mất phí không?</summary><p>Không. Đây là hội thảo miễn phí dành cho lãnh đạo, quản lý và chủ doanh nghiệp nhỏ.</p></details>
+        <details><summary>Tôi đang dùng Excel hoặc Google Sheet, có áp dụng được không?</summary><p>Có. Chính dữ liệu hiện có của bạn sẽ là điểm xuất phát để xây hệ thống quản trị.</p></details>
+        <details><summary>Có thể dùng trên điện thoại không?</summary><p>Có. Dữ liệu có thể được nhập và theo dõi trên cả điện thoại lẫn máy tính.</p></details>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== ĐĂNG KÝ ===== -->
+  <section class="cta" id="dang-ky">
+    <div class="wrap split">
+      <div>
+        <span class="kicker">HỘI THẢO MIỄN PHÍ</span>
+        <h2>Biến dữ liệu thành hệ thống quản trị thông minh</h2>
+        <p>Dành cho lãnh đạo, quản lý và chủ doanh nghiệp nhỏ. Để lại thông tin, tôi sẽ liên hệ gửi lịch và đường dẫn tham dự.</p>
+      </div>
+      <div class="panel">
+        <form id="leadForm" novalidate>
+          <label>Họ tên
+            <input type="text" name="name" autocomplete="name" required />
+          </label>
+          <label>Email
+            <input type="email" name="email" autocomplete="email" required />
+          </label>
+          <label>Số điện thoại
+            <input type="tel" name="phone" autocomplete="tel" required />
+          </label>
+          <label>Nhu cầu
+            <select name="need">
+              <option value="Đăng ký hội thảo">Đăng ký hội thảo</option>
+              <option value="Số hóa để tăng năng suất">Số hóa để tăng năng suất</option>
+              <option value="Quản trị bằng dữ liệu">Quản trị bằng dữ liệu</option>
+              <option value="Đổi mới mô hình kinh doanh">Đổi mới mô hình kinh doanh</option>
+            </select>
+          </label>
+          <label>Lời nhắn (không bắt buộc)
+            <textarea name="message"></textarea>
+          </label>
+          <input type="hidden" name="pageUrl" id="pageUrl" />
+          <input type="hidden" name="pageTitle" id="pageTitle" />
+          <button type="submit" class="btn" id="submitBtn">Gửi thông tin đăng ký</button>
+          <div id="formMessage" role="status" aria-live="polite"></div>
+        </form>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<div id="site-footer"></div>
+
+<script src="site.js"></script>
+</body>
+</html>
